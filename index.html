@@ -28,7 +28,15 @@
                     <div class="item-inner">
                       <div class="item-title label">Nombre</div>
                       <div class="item-input">
-                        <input type="text" name="username" placeholder="Su nombre">
+                        <input type="text" id="name" placeholder="Su nombre">
+                      </div>
+                    </div>
+                  </li>
+                  <li class="item-content">
+                    <div class="item-inner">
+                      <div class="item-title label">Email</div>
+                      <div class="item-input">
+                        <input type="text" id="email" placeholder="Su correo electronico">
                       </div>
                     </div>
                   </li>
@@ -58,5 +66,22 @@
     <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="js/framework7.js"></script>
     <script type="text/javascript" src="js/my-app.js"></script>
+    <script>
+        function registrar(){
+            var nombre = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var regId = document.getElementById('regId').value;
+            if (regId != "") {
+                if (nombre != "" && email != "") {
+                    //Enviamos los datos al servidor php
+                    document.formulario.submit();
+                }
+                else{alert('Ingrese un nombre y un correo para el registro en la base de datos.')}
+            }
+            else
+                {alert('Esperando regId del registro en GCM!');}
+        }
+      
+      </script>
   </body>
 </html>
