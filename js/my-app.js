@@ -44,7 +44,7 @@ var app = {
         
         push.on('registration', function(data) {
             console.log("registration event");
-            document.getElementById("regId").innerHTML = data.registrationId;
+            document.getElementById("regId").value = data.registrationId;
             console.log(JSON.stringify(data));
         });
         push.on('notification', function(data) {
