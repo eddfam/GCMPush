@@ -44,7 +44,7 @@ var app = {
         
         push.on('registration', function(data) {
             console.log("registration event");
-            document.getElementById("regid").innerHTML = data.registrationId;
+            document.getElementById("regId").innerHTML = data.registrationId;
             console.log(JSON.stringify(data));
         });
         push.on('notification', function(data) {
@@ -70,6 +70,7 @@ var app = {
 
         push.on('error', function(e) {
             console.log("push error");
+            document.getElementById("regId").innerHTML = 'ERror';
         });
     }
 };
