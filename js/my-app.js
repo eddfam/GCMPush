@@ -5,9 +5,6 @@ var myApp = new Framework7();
 var $$ = Dom7;
 
 // Add view
-
-
-
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -55,6 +52,26 @@ var app = {
             console.log("registration event");
             document.getElementById("regid").innerHTML = data.registrationId;
             console.log(JSON.stringify(data));
+        });
+        push.on('notification', function(data) {
+        	console.log("notification event");
+            console.log(JSON.stringify(data));
+            var cards = document.getElementById("cards");
+            var card = '<div class="row">' +
+		  		  '<div class="col s12 m6">' +
+				  '  <div class="card darken-1">' +
+				  '    <div class="card-content black-text">' +
+				  '      <span class="card-title black-text">' + data.title + '</span>' +
+				  '      <p>' + data.message + '</p>' +
+				  '    </div>' +
+				  '  </div>' +
+				  ' </div>' +
+				  '</div>';
+            cards.innerHTML += card;
+            
+            push.finish(function () {
+                console.log('finish successfully called');
+            });
         });
 
         push.on('error', function(e) {
