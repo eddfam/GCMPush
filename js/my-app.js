@@ -1,10 +1,4 @@
-// Initialize your app
-var myApp = new Framework7();
 
-// Export selectors engine
-var $$ = Dom7;
-
-// Add view
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
