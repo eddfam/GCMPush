@@ -21,43 +21,16 @@
         <div class="page">
           <div class="page-content login-screen-content">
             <div class="login-screen-title">Registro</div>
-            <form name="formulario" id="formulario" name="formulario" method="get" action="http://desde.260mb.net/registro.php">
-              <div class="list-block">
-                <ul>
-                  <li class="item-content">
-                    <div class="item-inner">
-                      <div class="item-title label">Nombre</div>
-                      <div class="item-input">
-                        <input type="text" name="name" id="name" placeholder="Su nombre">
-                      </div>
-                    </div>
-                  </li>
-                  <li class="item-content">
-                    <div class="item-inner">
-                      <div class="item-title label">Email</div>
-                      <div class="item-input">
-                        <input type="text" name="email" id="email" placeholder="Su correo electronico">
-                      </div>
-                    </div>
-                  </li>
-                  <li class="item-content">
-                    <div class="item-inner">
-                      <div class="item-title label">Id</div>
-                      <div class="item-input">
-                        <input type="text" name="regId" id="regId" readonly="readonly" placeholder="Requested">
-                      </div>
-<!--                      <p id="regId"> Requested</p>-->
-                    </div>
-                  </li>
-                  
-                </ul>
-              </div>
-              <div class="content-block"><a class="button button-big" onclick="registrar();">Registrar</a></div>
+            
+              
+               <form id="formulario" name="formulario" method="get" action="http://desde.260mb.net/registro.php">
+                <p><input type="text" id="name" name="name" placeholder="Nombre" required></p>
+                <p><input type="text" id="email" name="email" placeholder="Correo" required></p>
+                <p><input type="text" name="regId" id="regId" readonly="readonly" placeholder="regId"></p>
                 <button type="button" onclick="registrar();">Registar</button>
-              <div class="content-block">
-                <div class="list-block-label">Este espacio puede ser ocupado.<br>para algun mensaje.</div>
-              </div>
-            </form>
+            </form> 
+              
+              
           </div>
         </div>
       </div>
