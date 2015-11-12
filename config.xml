@@ -55,4 +55,6 @@ Prueba 1 de GCM Push </description>
     <!--Plugin de notificaciones -->
     <gap:plugin name="phonegap-plugin-push" source="npm" version="1.2.3" />
     <access origin="*" />
+    <access origin="http://phonegap.com" subdomains="true" />
+    
 </widget>
