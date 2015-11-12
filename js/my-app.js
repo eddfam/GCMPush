@@ -16,7 +16,15 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-var app = {
+
+function comprobacion(){
+
+var id=localStorage.getItem("regId");
+
+if(id==""||id==null ||id=="null" || id=="undefined")
+    {
+         window.location =("index.html");
+        var app = {
     // Application Constructor
     initialize: function() {
         this.bindEvents();
@@ -44,6 +52,7 @@ var app = {
         push.on('registration', function(data) {
             console.log("registration event");
             document.getElementById("regId").value = data.registrationId;
+            window.localStorage.setItem("regId", data.registrationId);
             console.log(JSON.stringify(data));
         });
         push.on('notification', function(data) {
@@ -74,4 +83,10 @@ var app = {
     }
 };
 
-app.initialize();
+app.initialize();        
+    }
+else
+    {
+         window.location =("home.html");
+    }
+}
