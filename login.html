@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="theme-color" content="#2196f3">
+    <title>Framework7 Material</title>
+    <link rel="stylesheet" href="css/framework7.material.css">
+    <link rel="stylesheet" href="css/framework7.material.colors.css">
+    <link href="http://fonts.googleapis.com/css?family=Roboto:400,300,500,700" rel="stylesheet" type="text/css">
+    
+  </head>
+  <body>
+    <div class="login-screen modal-in">
+    <div class="view">
+      <div class="page">
+        <div class="page-content login-screen-content">
+          <div class="login-screen-title">Registro</div>
+          <form id="formulario" name="formulario" method="get" action="http://desde.260mb.net/registro.php">
+            <div class="list-block">
+              <ul>
+                <li class="item-content">
+                  <div class="item-inner">
+                    <div class="item-title label">Nombre</div>
+                    <div class="item-input">
+                      <input type="text" id="name" name="name" placeholder="Nombre" required>
+                    </div>
+                  </div>
+                </li>
+                <li class="item-content">
+                  <div class="item-inner">
+                    <div class="item-title label">E-mail</div>
+                    <div class="item-input">
+                      <input type="text" id="email" name="email" placeholder="Correo" required>
+                    </div>
+                  </div>
+                </li>
+                <li class="item-content">
+                  <div class="item-inner">
+                    <div class="item-title label">Id</div>
+                    <div class="item-input">
+                     <input type="text" name="regId" id="regId" readonly="readonly" placeholder="regId">
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="list-block">
+              <ul>
+                <li><div class="content-block"><a onclick="registrar();"  class="button button-big">Sign In</a></div></li>
+              </ul>
+              <div class="list-block-label">
+                <p>Este espacio de puede ocupar, para algun mensaje.</p>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>    
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="js/framework7.js"></script>
+    <script type="text/javascript" src="js/my-app.js"></script>
+    <script>
+        
+        function registrar(){
+            var nombre = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var regId = document.getElementById('regId').value;
+            if (regId != "") {
+                if (nombre != "" && email != "") {
+                    //Enviamos los datos al servidor php
+                    document.formulario.submit();
+                }
+                else{alert('Ingrese un nombre y un correo para el registro en la base de datos.')}
+            }
+            else
+                {alert('Esperando regId del registro en GCM!');}
+        }
+      
+      </script>
+  </body>
+</html>
