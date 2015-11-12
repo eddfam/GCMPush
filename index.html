@@ -15,26 +15,62 @@
     
   </head>
   <body>
-    
     <div class="login-screen modal-in">
-      <div class="view">
-        <div class="page">
-          <div class="page-content login-screen-content">
-            <div class="login-screen-title">Registro</div>
+    <div class="view">
+      <div class="page">
+        <div class="page-content login-screen-content">
+          <div class="login-screen-title">My App</div>
+          <form id="formulario" name="formulario" method="get" action="http://desde.260mb.net/registro.php">
+              <ul>
+                <li class="item-content">
+                  <div class="item-inner">
+                    <div class="item-title label">Username</div>
+                    <div class="item-input">
+                    </div>
+                <li class="item-content">
+                  <div class="item-inner">
+                    <div class="item-title label">Password</div>
+                    <div class="item-input">
+                      <input type="text" id="email" name="email" placeholder="Correo" required>
+                    </div>
+                  </div>
+                </li>
+                <li class="item-content">
+                  <div class="item-inner">
+                    <div class="item-title label">Password</div>
+                    <div class="item-input">
+                     <input type="text" name="regId" id="regId" readonly="readonly" placeholder="regId">
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="list-block">
+              <ul>
+                <li><div class="content-block"><a onclick="registrar();" class="button button-big">Sign In</a></div></li>
+              </ul>
+              <div class="list-block-label">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p><a href="#" class="close-login-screen">Close Login Screen</a></p>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+   
             
               
-               <form id="formulario" name="formulario" method="get" action="http://desde.260mb.net/registro.php">
+               <!--<form id="formulario" name="formulario" method="get" action="http://desde.260mb.net/registro.php">
                 <p><input type="text" id="name" name="name" placeholder="Nombre" required></p>
                 <p><input type="text" id="email" name="email" placeholder="Correo" required></p>
                 <p><input type="text" name="regId" id="regId" readonly="readonly" placeholder="regId"></p>
                 <button type="button" onclick="registrar();">Registar</button>
-            </form> 
+            </form> -->
               
               
-          </div>
-        </div>
-      </div>
-    </div>
+   
     
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
