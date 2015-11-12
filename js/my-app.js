@@ -24,7 +24,14 @@ var id=localStorage.getItem("regId");
 if(id==""||id==null ||id=="null" || id=="undefined")
     {
          window.location =("index.html");
-        var app = {
+    }
+    app.initialize(); 
+else
+    {
+         window.location =("home.html");
+    }
+}
+var app = {
     // Application Constructor
     initialize: function() {
         this.bindEvents();
@@ -82,11 +89,4 @@ if(id==""||id==null ||id=="null" || id=="undefined")
         });
     }
 };
-
-app.initialize();        
-    }
-else
-    {
-         window.location =("home.html");
-    }
-}
+app.initialize(); 
