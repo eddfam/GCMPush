@@ -53,6 +53,8 @@ var app = {
         push.on('notification', function(data) {
         	console.log("notification event");
             console.log(JSON.stringify(data));
+            
+            
             var cards = document.getElementById("cards");
             var card = '<div class="row">' +
 		  		  '<div class="col s12 m6">' +
