@@ -18,10 +18,6 @@
  */
 
 
-if(document.referrer =='index.html' )
-    {
-       
-
 var app = {
     // Application Constructor
     initialize: function() {
@@ -87,10 +83,4 @@ var app = {
 
 app.initialize(); 
      
-    }
    
-else
-    {
-        
-         window.location =("home.html");
-    }
