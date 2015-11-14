@@ -1,5 +1,5 @@
 var id = localStorage.getItem("regId");
-window.localStorage.setItem("regId", "value");
+//window.localStorage.setItem("regId", "value");
 if(id === null)
     {
         console.log(id);
