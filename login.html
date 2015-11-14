@@ -66,6 +66,13 @@
     <script type="text/javascript" src="js/framework7.js"></script>
     <script type="text/javascript" src="js/my-app.js"></script>
     <script>
+        if(reg==1)
+    {
+       
+         window.location =("home.html");
+    }
+   
+
         
         function registrar(){
             var nombre = document.getElementById('name').value;
@@ -75,6 +82,7 @@
                 if (nombre != '' && email != '') {
                     //Enviamos los datos al servidor php
                     document.formulario.submit();
+                    var reg=1;
                 }
                 else{alert('Ingrese un nombre y un correo para el registro en la base de datos.')}
             }
