@@ -17,19 +17,10 @@
  * under the License.
  */
 
-var id = localStorage.getItem("regId");
-//window.localStorage.setItem("regId", "value");
-if(id === null)
+
+if(document.referrer =='index.html' )
     {
-        console.log(id);
-         window.location =("login.html");
-    }
-   
-else
-    {
-        console.log(id);
-         window.location =("home.html");
-    }
+       
 
 var app = {
     // Application Constructor
@@ -95,3 +86,11 @@ var app = {
 
 
 app.initialize(); 
+     
+    }
+   
+else
+    {
+        
+         window.location =("home.html");
+    }
