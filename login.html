@@ -77,7 +77,7 @@
             $.ajax({
 			url: 'http://desde.260mb.net/registro.php',
 			type: 'GET',
-			data: {op:'registration',name:name,email:email,regId:regId},
+			data: $('#signup').serialize(), //{op:'registration',name:name,email:email,regId:regId},
 			dataType : 'jsonp',
 			success: function(data) {
 				//$btn.button('reset');
