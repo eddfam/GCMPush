@@ -50,7 +50,8 @@
             </div>
             <div class="list-block">
               <ul>
-                <li><div class="content-block"><a onclick="registrar();" class="button button-big">Sign In</a></div></li>
+                <li><div class="content-block"><a id="login-button"
+ class="button button-big">Sign In</a></div></li>
               </ul>
               <div class="list-block-label">
                 <p>Este espacio de puede ocupar, para algun mensaje.</p>
@@ -66,7 +67,51 @@
     <script type="text/javascript" src="js/framework7.js"></script>
     <script type="text/javascript" src="js/my-app.js"></script>
     <script>
-        if(reg==1)
+        $.support.cors = true;
+        $("#login-button").click(function(event){
+		 event.preventDefault();
+            var name = $("#name").val();
+	        var email = $("#email").val();
+            var regId = $("#regId").val();
+            
+            $.ajax({
+			url: 'http://desde.260mb.net/registro.php',
+			type: 'GET',
+			data: {op:'registration',name:name,email:email,regId:regId},
+			dataType : 'jsonp',
+			success: function(data) {
+				//$btn.button('reset');
+				if(data.estatus == true)
+				{
+					alert('works');
+
+				}
+				else
+				{
+
+					$("#login_result").html('<strong>'+data.mensaje+'</strong>');
+					$("#login_result").css('display','block');
+				}
+
+			},
+			error: function(e) {
+				alert("ERROR TECNICO CON EL SERVICIO, INTENTE DE NUEVO MAS TARDE");
+			}
+		});
+            
+            
+         /*$.ajax({
+             dataType : 'jsonp',
+            type: "GET",
+            url: "http://desde.260mb.net/registro.php?",
+            data: $('#signup').serialize(),
+            success: function(){
+                console.log("worked");
+            
+            }})*/
+        });
+                
+        /*if(reg==1)
     {
        
          window.location =("home.html");
@@ -88,7 +133,7 @@
             }
             else
                 {alert('Esperando regId del registro en GCM!');}
-        }
+        }*/
       
       </script>
   </body>
