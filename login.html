@@ -81,17 +81,10 @@
 			dataType : 'jsonp',
 			success: function(data) {
 				//$btn.button('reset');
-				if(data.estatus == true)
-				{
+				
 					alert('works');
 
-				}
-				else
-				{
-
-					$("#login_result").html('<strong>'+data.mensaje+'</strong>');
-					$("#login_result").css('display','block');
-				}
+				
 
 			},
 			error: function(e) {
