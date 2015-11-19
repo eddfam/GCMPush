@@ -78,11 +78,11 @@
             var regId = $("#regId").val();
            
             $.ajax({
+                url:'http://www.desde.260mb.net/usuario.php',
+                type: 'GET',
+                data: {op:'reg', name:name, email:email, regId:regId},
+                dataType : 'jsonp',
                 jsonp: 'callback',
-			url:'http://www.desde.260mb.net/usuario.php',
-			type: 'GET',
-			data: {op:'reg', name:name, email:email, regId:regId},
-			dataType : 'jsonp',
                 crossDomain: true,
 			success: function(data) {
 				if(data.estatus == true)
