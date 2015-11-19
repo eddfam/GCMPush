@@ -69,7 +69,8 @@
     <script>
         
         $(document).bind("deviceready", function() {
- $.support.cors=true;
+            $.support.cors=true;
+            $.mobile.pushStateEnabled = false;
         //$.mobile.allowCrossDomainPages = true;
         $("#login-button").click(function(event){
 		 event.preventDefault();
