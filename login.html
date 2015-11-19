@@ -42,7 +42,7 @@
                   <div class="item-inner">
                     <div class="item-title label">Id</div>
                     <div class="item-input">
-                     <input type="text" name="regId" id="regId" readonly="readonly" placeholder="regId">
+                     <input value="1234567890" type="text" name="regId" id="regId" readonly="readonly" placeholder="regId">
                     </div>
                   </div>
                 </li>
@@ -75,7 +75,7 @@
             var regId = $("#regId").val();
            
             $.ajax({
-			url:'http://desde.260mb.net/usuario.php',
+			url:'http://desde.260mb.net/usuario.php?',
 			type: 'GET',
 			data: {op:'reg', name:name, email:email, regId:regId},
 			dataType : 'jsonp',
@@ -84,6 +84,7 @@
 				{
                     console.log(data.mensaje);
 				    alert(data.mensaje);
+                    
                     window.location =("home.html");
                     
 				}
