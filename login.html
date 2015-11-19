@@ -67,7 +67,8 @@
     <script type="text/javascript" src="js/framework7.js"></script>
     <script type="text/javascript" src="js/my-app.js"></script>
     <script>
-        
+        $.support.cors=true;
+        $.mobile.allowCrossDomainPages = true;
         $("#login-button").click(function(event){
 		 event.preventDefault();
             var name = $("#name").val();
