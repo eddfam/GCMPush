@@ -67,7 +67,9 @@
     <script type="text/javascript" src="js/framework7.js"></script>
     <script type="text/javascript" src="js/my-app.js"></script>
     <script>
-        $.support.cors=true;
+        
+        $(document).bind("deviceready", function() {
+ $.support.cors=true;
         $.mobile.allowCrossDomainPages = true;
         $("#login-button").click(function(event){
 		 event.preventDefault();
@@ -102,7 +104,9 @@
 				alert("dp ERROR TECNICO CON EL SERVICIO, INTENTE DE NUEVO MAS TARDE " +JSON.stringify(e));
 			}
 		});
-    });
+    });  
+});
+        
                 
         /*if(reg==1)
     {
