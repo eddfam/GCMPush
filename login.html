@@ -67,10 +67,6 @@
     <script type="text/javascript" src="js/framework7.js"></script>
     <script type="text/javascript" src="js/my-app.js"></script>
     <script>
-        
- 
-    
-  
         $("#login-button").click(function(event){
 		 event.preventDefault();
             var name = $("#name").val();
@@ -81,29 +77,24 @@
                 url:'http://desde.260mb.net/usuario.php',
                 type: 'GET',
                 data: {op:'reg', name:name, email:email, regId:regId},
-                dataType : 'json',
+                dataType : 'jsonp',
                 //contentType: "application/json; charset=utf-8",
                 //jsonp: 'callback',
                 //crossDomain: true,
 			success: function(data) {
-				if(data.estatus == true)
-				{
+				if(data.estatus == true){
                     console.log(data.mensaje);
-				    alert(data.mensaje);
-                    
-                    window.location =("home.html");
-                    
+				    alert(data.mensaje);                    
+                    window.location =("home.html");                    
 				}
-				else
-                {
+				else{
                     alert("Error : "+data.mensaje);
                     console.log(data.mensaje);
 				}
-
 			},
 			error: function(e) {
                 console.log(JSON.stringify(e));
-				alert("dp ERROR TECNICO CON EL SERVICIO, INTENTE DE NUEVO MAS TARDE " +JSON.stringify(e));
+				alert("ERROR TECNICO CON EL SERVICIO, INTENTE DE NUEVO MAS TARDE " +JSON.stringify(e));
 			}
 		});
     });  
