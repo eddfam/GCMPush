@@ -7,7 +7,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="theme-color" content="#2196f3">
-    <title>Framework7 Material</title>
+    <title>Notifications</title>
     <link rel="stylesheet" href="css/framework7.material.css">
     <link rel="stylesheet" href="css/framework7.material.colors.css">
     <link href="http://fonts.googleapis.com/css?family=Roboto:400,300,500,700" rel="stylesheet" type="text/css">
@@ -19,7 +19,7 @@
       <div class="page">
         <div class="page-content login-screen-content">
           <div class="login-screen-title">Registro</div>
-          <form id="formulario" name="formulario" method="get" action="http://desde.260mb.net/registro.php">
+          <form id="formulario" name="formulario">
             <div class="list-block">
               <ul>
                 <li class="item-content">
@@ -67,42 +67,39 @@
     <script type="text/javascript" src="js/framework7.js"></script>
     <script type="text/javascript" src="js/my-app.js"></script>
     <script>
-        $.support.cors = true;
+        
         $("#login-button").click(function(event){
 		 event.preventDefault();
             var name = $("#name").val();
 	        var email = $("#email").val();
             var regId = $("#regId").val();
-            
+           
             $.ajax({
-			url: 'http://desde.260mb.net/registro.php?',
+			url:'http://desde.260mb.net/usuario.php',
 			type: 'GET',
-			data: $('#signup').serialize(), //{op:'registration',name:name,email:email,regId:regId},
+			data: {op:'reg', name:name, email:email, regId:regId},
 			dataType : 'jsonp',
 			success: function(data) {
-				//$btn.button('reset');
-				
-					alert('works');
-
-				
+				if(data.estatus == true)
+				{
+                    console.log(data.mensaje);
+				    alert(data.mensaje);
+                    window.location =("home.html");
+                    
+				}
+				else
+                {
+                    alert("Error : "+data.mensaje);
+                    console.log(data.mensaje);
+				}
 
 			},
 			error: function(e) {
-				alert("ERROR TECNICO CON EL SERVICIO, INTENTE DE NUEVO MAS TARDE");
+                console.log(JSON.stringify(e));
+				alert("dp ERROR TECNICO CON EL SERVICIO, INTENTE DE NUEVO MAS TARDE " +e);
 			}
 		});
-            
-            
-         /*$.ajax({
-             dataType : 'jsonp',
-            type: "GET",
-            url: "http://desde.260mb.net/registro.php?",
-            data: $('#signup').serialize(),
-            success: function(){
-                console.log("worked");
-            
-            }})*/
-        });
+    });
                 
         /*if(reg==1)
     {
