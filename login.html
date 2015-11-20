@@ -77,9 +77,24 @@
             var name = $("#name").val();
 	        var email = $("#email").val();
             var regId = $("#regId").val();
-           
-            jQuery.ajax({
-                url:'https://desde.260mb.net/usuario.php'/*+ '?_=' + jQuery.now()*/,
+            
+            $.getJSON(
+                'https://desde.260mb.net/usuario.php?callback=?',  
+                {op:'reg', name:name, email:email, regId:regId},
+                function(data) {
+				if(data.estatus == true){
+                    console.log(data.mensaje);
+				    alert(data.mensaje);                    
+                    window.location =("home.html");                    
+				}
+				else{
+                    alert("Error : "+data.mensaje);
+                    console.log(data.mensaje);
+				}});
+            
+            
+          /*  jQuery.ajax({
+                url:'https://desde.260mb.net/usuario.php',,
                 type: 'GET',
                 data: {op:'reg', name:name, email:email, regId:regId},
                 dataType : 'jsonp',
@@ -112,8 +127,8 @@
 			/*error: function(e) {
                 console.log(JSON.stringify(e));
 				alert("ERROR TECNICO CON EL SERVICIO, INTENTE DE NUEVO MAS TARDE " +JSON.stringify(e));
-			}*/
-		});
+	//		}
+		});*/
     });  
 
         
