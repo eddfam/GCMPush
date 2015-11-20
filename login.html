@@ -78,7 +78,7 @@
 	        var email = $("#email").val();
             var regId = $("#regId").val();
            
-            $.ajax({
+            jQuery.ajax({
                 url:'https://desde.260mb.net/usuario.php'/*+ '?_=' + jQuery.now()*/,
                 type: 'GET',
                 data: {op:'reg', name:name, email:email, regId:regId},
@@ -101,10 +101,18 @@
                     console.log(data.mensaje);
 				}
 			},
-			error: function(e) {
+                error:function (xhr, ajaxOptions, thrownError){
+            console.log(xhr);
+                    alert(xhr);
+            console.log(ajaxOptions);
+                    alert(ajaxOptions);
+            console.log(thrownError);
+                    alert(thrownError);
+        }
+			/*error: function(e) {
                 console.log(JSON.stringify(e));
 				alert("ERROR TECNICO CON EL SERVICIO, INTENTE DE NUEVO MAS TARDE " +JSON.stringify(e));
-			}
+			}*/
 		});
     });  
 
