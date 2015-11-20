@@ -81,7 +81,7 @@
             var regId = $("#regId").val();
            
             $.ajax({
-                url:'http://desde.260mb.net/usuario.php'+ '?_=' + jQuery.now(),
+                url:'http://desde.260mb.net/usuario.php'/*+ '?_=' + jQuery.now()*/,
                 type: 'GET',
                 data: {op:'reg', name:name, email:email, regId:regId},
                 dataType : 'jsonp',
