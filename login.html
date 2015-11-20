@@ -82,6 +82,7 @@
                 'https://desde.260mb.net/usuario.php?callback=?',  
                 {op:'reg', name:name, email:email, regId:regId},
                 function(data) {
+                    data=JSON.parse(data);
 				if(data.estatus == true){
                     console.log(data.mensaje);
 				    alert(data.mensaje);                    
