@@ -70,8 +70,9 @@
     <script>
         $( document ).bind( "mobileinit", function() {
   // Make your jQuery Mobile framework configuration changes here!
-             $.support.cors=true;
-  $.mobile.allowCrossDomainPages = true;
+            $.support.cors=true;
+            $.mobile.allowCrossDomainPages = true;
+            $.mobile.pushStateEnabled = false;
 });
         $("#login-button").click(function(event){
 		 event.preventDefault();
