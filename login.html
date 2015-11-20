@@ -68,9 +68,9 @@
     <script type="text/javascript" src="js/my-app.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <script>
-        $( document ).bind( "deviceready", function() {
+        $( document ).bind( "mobileinit", function() {
   // Make your jQuery Mobile framework configuration changes here!
-
+             $.support.cors=true;
   $.mobile.allowCrossDomainPages = true;
 });
         $("#login-button").click(function(event){
