@@ -97,9 +97,14 @@
            $.ajax({
                 url:'https://desde.260mb.net/usuario.php',
                 type: 'GET',
-                data: {op:'reg', name:name, email:email, regId:regId},
+                data: {
+                    op:'reg',
+                    name:name,
+                    email:email,
+                    regId:regId
+                },
                 dataType : 'jsonp',
-                //jsonp: false,
+                jsonp: false,
                 cache : false,
                 jsonpCallback: "callback", 
                 contentType: "application/json; charset=utf-8",
