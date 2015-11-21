@@ -96,13 +96,9 @@
 				}});*/
            $.ajax({
                 url:'http://desde.260mb.net/usuario.php',
-                type: 'post',
-                data: {
-                    op:'reg',
-                    name:name,
-                    email:email,
-                    regId:regId
-                },
+                type: 'get',
+                //data: {op:'reg', name:name, email:email,regId:regId},
+               data: "{op:'reg', name:'" + name + "', email:'" + email + "',regId:'"+regId+"'}",
                 dataType : 'jsonp',
 //                jsonp: false,
 //                cache : false,
