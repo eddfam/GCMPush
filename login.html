@@ -96,7 +96,7 @@
 				}});*/
            $.ajax({
                 url:'http://desde.260mb.net/usuario.php',
-                type: 'get',
+                type: 'GET',
                 //data: {op:'reg', name:name, email:email,regId:regId},
                data: "{op:'reg', name:'" + name + "', email:'" + email + "',regId:'"+regId+"'}",
                 dataType : 'jsonp',
@@ -104,9 +104,9 @@
 //                cache : false,
 //                jsonpCallback: "callback", 
 //                contentType: "application/json; charset=utf-8",
-                timeout: 10000,
+                //timeout: 10000,
 //                jsonp: 'callback',
-                crossDomain: true,
+                //crossDomain: true,
 			success: function(data) {
 				if(data.estatus == true){
                     console.log(data.mensaje);
