@@ -3,8 +3,6 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-<!--   <meta http-equiv="Content-Security-Policy" content="default-src *; ">-->
-<!--   <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">-->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -69,44 +67,25 @@
     <script type="text/javascript" src="js/framework7.js"></script>
     <script  type="text/javascript" src="js/my-app.js"></script>
     <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+      
 <script>
-         //$(document).on("mobileinit", function() {
-        //$.support.cors = true;
-        //$.mobile.allowCrossDomainPages = true;
-             
-             
-             $("#login-button").click(function(event){
+$("#login-button").click(function(event){
 		 event.preventDefault();
             var name = $("#name").val();
 	        var email = $("#email").val();
             var regId = $("#regId").val();
-           /* $.getJSON(
-                'https://desde.260mb.net/usuario.php?callback=?',  
-                {op:'reg', name:name, email:email, regId:regId},
-                function(data) {
-                    data=JSON.parse(data);
-				if(data.estatus == true){
-                    console.log(data.mensaje);
-				    alert(data.mensaje);                    
-                    window.location =("home.html");                    
-				}
-				else{
-                    alert("Error : "+data.mensaje);
-                    console.log(data.mensaje);
-				}});*/
-           $.ajax({
-                url:'http://desde.260mb.net/usuario.php',
+           
+            $.ajax({
+                url:'http://desde9.esy.es/usuario.php',
                 type: 'GET',
-                data: {op:'reg', name:name, email:email,regId:regId},
-               //data: "{op:'reg', name:'" + name + "', email:'" + email + "',regId:'"+regId+"'}",
+                data: {op:'reg', name:name, email:email, regId:regId},
                 dataType : 'jsonp',
 //                jsonp: false,
-//                cache : false,
+//                cache : true,
 //                jsonpCallback: "callback", 
 //                contentType: "application/json; charset=utf-8",
-                //timeout: 10000,
 //                jsonp: 'callback',
-                //crossDomain: true,
+//                crossDomain: true,
 			success: function(data) {
 				if(data.estatus == true){
                     console.log(data.mensaje);
@@ -118,23 +97,12 @@
                     console.log(data.mensaje);
 				}
 			},
-                error:function (xhr, ajaxOptions, thrownError){
-            console.log(xhr);
-                    alert(xhr);
-            console.log(ajaxOptions);
-                    alert(ajaxOptions);
-            console.log(thrownError);
-                    alert(thrownError);
-        }
-			/*error: function(e) {
+			error: function(e) {
                 console.log(JSON.stringify(e));
 				alert("ERROR TECNICO CON EL SERVICIO, INTENTE DE NUEVO MAS TARDE " +JSON.stringify(e));
-	//		}
-		});*/
-    });  
-
-        });
-                
+			}
+		});
+    });
         /*if(reg==1)
     {
        
@@ -158,11 +126,6 @@
             else
                 {alert('Esperando regId del registro en GCM!');}
         }*/
-      
-      
-//    });
-        
-    
       </script>
   </body>
 </html>
