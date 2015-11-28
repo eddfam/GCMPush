@@ -7,7 +7,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="theme-color" content="#2196f3">
-    <title>Notifications</title>
+    <title>Notificaciones</title>
     <link rel="stylesheet" href="css/framework7.material.css">
     <link rel="stylesheet" href="css/framework7.material.colors.css">
     <link href="css/googlefont.css" rel="stylesheet" type="text/css">
@@ -24,9 +24,33 @@
               <ul>
                 <li class="item-content">
                   <div class="item-inner">
+                    <div class="item-title label">No. de Control</div>
+                    <div class="item-input">
+                      <input type="text" id="nControl" name="nControl" placeholder="12345,12345">
+                    </div>
+                    </div>
+                </li>
+                <li class="item-content">
+                  <div class="item-inner">
                     <div class="item-title label">Nombre</div>
                     <div class="item-input">
-                      <input type="text" id="name" name="name" placeholder="Nombre" required>
+                      <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
+                    </div>
+                  </div>
+                </li>
+                <li class="item-content">
+                  <div class="item-inner">
+                    <div class="item-title label">Contraseña</div>
+                    <div class="item-input">
+                     <input type="password" name="password" id="password" placeholder="********">
+                    </div>
+                  </div>
+                </li>
+                <li class="item-content">
+                  <div class="item-inner">
+                    <div class="item-title label">Repita Contraseña</div>
+                    <div class="item-input">
+                     <input type="password" name="rPassword" id="rPassword" placeholder="********">
                     </div>
                   </div>
                 </li>
@@ -34,15 +58,28 @@
                   <div class="item-inner">
                     <div class="item-title label">E-mail</div>
                     <div class="item-input">
-                      <input type="text" id="email" name="email" placeholder="Correo" required>
+                     <input type="email" required name="email" id="email" placeholder="nombre@ejemplo.com">
                     </div>
                   </div>
                 </li>
                 <li class="item-content">
                   <div class="item-inner">
-                    <div class="item-title label">Id</div>
+                    <div class="item-title label">Tipo de Usuario</div>
                     <div class="item-input">
-                     <input type="text" name="regId" id="regId" readonly="readonly" placeholder="Esperando ID">
+                     <select name="tipoUsuario" id="tipoUsuario">
+                        <option value="">Elija uno</option>
+                         <option value="alumno">Alumno</option>
+                         <option value="padre">Padre</option>
+                         <option value="madre">Madre</option>
+                     </select>
+                    </div>
+                  </div>
+                </li>
+                <li class="item-content">
+                  <div class="item-inner">
+                    <div class="item-title label">GSM-ID</div>
+                    <div class="item-input">
+                     <input disabled type="text" name="regid" id="regid" placeholder="Esperando GCMid">
                     </div>
                   </div>
                 </li>
@@ -51,10 +88,10 @@
             <div class="list-block">
               <ul>
                 <li><div class="content-block"><a id="login-button"
- class="button button-big">Sign In</a></div></li>
+ class="button button-big">Registrarse</a></div></li>
               </ul>
               <div class="list-block-label">
-                <p>Este espacio de puede ocupar, para algun mensaje.</p>
+                <p>Este espacio de puede ocupar, para algun mensaje. <a href="#" data-popover=".popover-about" class="open-popover">Ayuda</a></p>
               </div>
             </div>
           </form>
@@ -67,41 +104,74 @@
     <script type="text/javascript" src="js/framework7.js"></script>
     <script  type="text/javascript" src="js/my-app.js"></script>
     <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
-      
-<script>
-$("#login-button").click(function(event){
-		 event.preventDefault();
-            var name = $("#name").val();
+    <script>
+        
+
+        var myApp = new Framework7();
+ 
+var $$ = Dom7;
+ 
+// Open About popover
+$$('.open-about').on('click', function () {
+    var clickedLink = this;
+    myApp.popover('.popover-about', clickedLink);
+});
+        $("#login-button").click(function(event){
+            event.preventDefault();
+            var nControl =$("#nControl").val();
+            var nombre = $("#nombre").val();
 	        var email = $("#email").val();
             var regId = $("#regId").val();
-           
-            $.ajax({
-                url:'http://desde9.esy.es/usuario.php',
-                type: 'GET',
-                data: {op:'reg', name:name, email:email, regId:regId},
-                dataType : 'jsonp',
-//                jsonp: false,
-//                cache : true,
-//                jsonpCallback: "callback", 
-//                contentType: "application/json; charset=utf-8",
-//                jsonp: 'callback',
-//                crossDomain: true,
-			success: function(data) {
-				if(data.estatus == true){
-                    console.log(data.mensaje);
-				    alert(data.mensaje);                    
-                    window.location =("home.html");                    
-				}
-				else{
-                    alert("Error : "+data.mensaje);
-                    console.log(data.mensaje);
-				}
-			},
-			error: function(e) {
-                console.log(JSON.stringify(e));
-				alert("ERROR TECNICO CON EL SERVICIO, INTENTE DE NUEVO MAS TARDE " +JSON.stringify(e));
-			}
-		});
+            var password =$("#password").val();
+            var rPassword =$("#rPassword").val();
+            function validateEmail(email) { 
+                var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(email);
+            }
+            var tipoUsuario = $("#tipoUsuario").val();
+            
+             if (nControl==''||nControl==undefined) {
+               return alert('Ingrese correctamente el No. de Control');
+             } else if(nombre==''||nombre==undefined){
+                 return alert('Es requerido el  nombre del usuario');
+             }else if(password==''||password==undefined){
+                 return alert('Ingrese una contraseña valida');
+             }else if(rPassword==''||rPassword==undefined){
+                 return alert('Repita su contraseña');
+             }else if(password!=rPassword){
+                 return alert('La contraseña no coincide');
+             }else if(email==''||email==undefined){
+                 return alert('Ingrese su correo electronico');
+             }else if (!validateEmail(email)) {
+                 return alert('Correo electronico no valido');
+             }else if (tipoUsuario==''||tipoUsuario==undefined) {
+                 return alert('Seleccione el tipo de Usuario');
+             }else if (regId==''||regId==undefined) {
+                 return alert('Esperando asignacion de GSM-ID asegurese de estar conectado a internet');
+             }else{
+                 $.ajax({
+                     url:'http://desde9.esy.es/usuario.php',
+                     type: 'GET',
+                     data: {op:'reg', nControl: nControl, nombre:nombre, email:email, regId:regId, password:password, tipoUsuario:tipoUsuario},
+                     dataType : 'jsonp',
+                     success: function(data) {
+                         if(data.estatus == true){
+                             console.log(data.mensaje);
+                             alert(data.mensaje);
+                             window.location =("home.html");
+                         }else{
+                             alert("Error : "+data.mensaje);
+                             console.log(data.mensaje);
+                         }
+                     },error: function(e) {
+                         console.log(JSON.stringify(e));
+                         alert("ERROR TECNICO CON EL SERVICIO, INTENTE DE NUEVO MAS TARDE " +JSON.stringify(e));
+                     }
+                 });
+                 return alert('ok');
+             }
+    
+
     });
         /*if(reg==1)
     {
@@ -127,5 +197,22 @@ $("#login-button").click(function(event){
                 {alert('Esperando regId del registro en GCM!');}
         }*/
       </script>
+      
+ <style>
+    .popover {
+      width: 200px;
+    }
+  </style>
+ 
+  <!-- About popover -->
+  <div class="popover popover-about">
+    <div class="popover-angle"></div>
+    <div class="popover-inner">
+      <div class="content-block">
+        <p>About</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ac diam ac quam euismod porta vel a nunc. Quisque sodales scelerisque est, at porta justo cursus ac.</p>
+      </div>
+    </div>
+  </div>
   </body>
 </html>
