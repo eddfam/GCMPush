@@ -105,17 +105,6 @@
     <script  type="text/javascript" src="js/my-app.js"></script>
     <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
     <script>
-        
-
-        var myApp = new Framework7();
- 
-var $$ = Dom7;
- 
-// Open About popover
-$$('.open-about').on('click', function () {
-    var clickedLink = this;
-    myApp.popover('.popover-about', clickedLink);
-});
         $("#login-button").click(function(event){
             event.preventDefault();
             var nControl =$("#nControl").val();
@@ -149,6 +138,9 @@ $$('.open-about').on('click', function () {
              }else if (regId==''||regId==undefined) {
                  return alert('Esperando asignacion de GSM-ID asegurese de estar conectado a internet');
              }else{
+                 window.localStorage.setItem("nombreUsuario", nombre);
+                 console.log(window.localStorage.getItem("regId"));
+                 console.log(window.localStorage.getItem("nombreUsuario"));
                  $.ajax({
                      url:'http://desde9.esy.es/usuario.php',
                      type: 'GET',
@@ -158,6 +150,7 @@ $$('.open-about').on('click', function () {
                          if(data.estatus == true){
                              console.log(data.mensaje);
                              alert(data.mensaje);
+                             alert(window.localStorage.getItem("nombreUsuario"))
                              window.location =("home.html");
                          }else{
                              alert("Error : "+data.mensaje);
@@ -168,11 +161,8 @@ $$('.open-about').on('click', function () {
                          alert("ERROR TECNICO CON EL SERVICIO, INTENTE DE NUEVO MAS TARDE " +JSON.stringify(e));
                      }
                  });
-                 return alert('ok');
              }
-    
-
-    });
+        });
         /*if(reg==1)
     {
        
@@ -197,22 +187,5 @@ $$('.open-about').on('click', function () {
                 {alert('Esperando regId del registro en GCM!');}
         }*/
       </script>
-      
- <style>
-    .popover {
-      width: 200px;
-    }
-  </style>
- 
-  <!-- About popover -->
-  <div class="popover popover-about">
-    <div class="popover-angle"></div>
-    <div class="popover-inner">
-      <div class="content-block">
-        <p>About</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ac diam ac quam euismod porta vel a nunc. Quisque sodales scelerisque est, at porta justo cursus ac.</p>
-      </div>
-    </div>
-  </div>
   </body>
 </html>

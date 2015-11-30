@@ -28,6 +28,7 @@
             </div>
             <div class="page-content">
               <div class="content-block">
+               <div id="result"></div>
                 <p>This is a side panel/drawer.  <a href="#" class="close-panel">close me</a>. You can put here anything, <a href="#" data-panel="right" class="open-panel">Right Panel</a></p>
               </div>
               <div class="content-block-title">Framework7 Kitchen Sink</div>
@@ -132,7 +133,7 @@
               </div>
             </div>
             <div class="page-content">
-              <div class="content-block-title">Welcome To Framework7</div>
+              <div class="content-block-title">App Notificaciones</div>
               <div class="content-block"><a href="#about" class="button button-raised">About Framework7</a></div>
               <div class="content-block-title">Framework7 Kitchen Sink</div>
               <div class="list-block">
@@ -640,5 +641,9 @@
     <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="js/framework7.js"></script>
     <script type="text/javascript" src="js/home.js"></script>
+    <script>
+      document.getElementById("result").innerHTML = localStorage.getItem("nombreUsuario");
+      
+      </script>
   </body>
 </html>

@@ -75,7 +75,7 @@ var app = {
 
         push.on('error', function(e) {
             console.log("push error");
-            document.getElementById("regId").innerHTML = 'ERror';
+            document.getElementById("regId").innerHTML = 'Error';
         });
     }
 };
