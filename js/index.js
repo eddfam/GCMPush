@@ -1,13 +1,14 @@
 var id = localStorage.getItem("regId");
-//window.localStorage.setItem("regId", "value");
-if(id === null)
+var nombreUsuario = localStorage.getItem("nombreUsuario");
+
+if(id === null & nombreUsuario===null)
     {
-        console.log(id);
+        console.log(id+nombreUsuario);
          window.location =("login.html");
     }
    
 else
     {
-        console.log(id);
+        console.log(id+nombreUsuario);
          window.location =("home.html");
     }
