@@ -55,7 +55,7 @@
 <div class="content-block"><a id="login-button" class="button button-big">Iniciar sesión</a></div>
               
               <div class="registro">
-                <p> <a href="login.html">Si no está registrado pulse aquí</a></p>
+                <p> <a id="signup-btn" href="#">Si no está registrado pulse aquí</a></p>
               </div>
             </div>
           </div>
@@ -69,6 +69,12 @@
           text-align: center;
       }
       </style>
+      <script>
+          $("#signup-btn").click(function(event){
+            event.preventDefault();
+        location.href = "login.html";
+          });
+      </script>
   
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
