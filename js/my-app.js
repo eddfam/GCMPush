@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-
+  javascript:window.history.forward(1);
 
 var app = {
     // Application Constructor
