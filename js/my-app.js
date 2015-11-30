@@ -47,6 +47,7 @@ var app = {
             console.log("registration event");
             document.getElementById("regId").value = data.registrationId;
             console.log(data.registrationId);
+            alert(data.registrationId);
             window.localStorage.setItem("regId", data.registrationId);
             console.log(JSON.stringify(data));
         });
