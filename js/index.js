@@ -1,4 +1,4 @@
-  javascript:window.history.forward(1);
+
 // Init App
 var myApp = new Framework7({
     modalTitle: 'Framework7',

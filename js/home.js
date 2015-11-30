@@ -1,4 +1,4 @@
-  javascript:window.history.forward(1);
+
 // Init App
 var myApp = new Framework7({
     modalTitle: 'Framework7',
@@ -49,12 +49,8 @@ var app = {
 
         push.on('error', function(e) {
             console.log("push error");
-            document.getElementById("regId").innerHTML = 'ERror';
+            document.getElementById("regId").innerHTML = 'Error';
         });
     }
 };
 app.initialize(); 
-
-$$('#logout-button').on('click', function (e) {
-        myApp.closePanel();
-    });

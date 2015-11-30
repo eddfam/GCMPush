@@ -31,7 +31,7 @@
               </div>
             </div>
             <div class="page-content">
-              
+              <a href="logout.html">salir</a>
                   <div class="content-block-title">Usuario</div>
                   <div class="content-block">
                         <div  class="chip ">
@@ -613,13 +613,38 @@
         <div class="content-block">Integer mollis nulla id nibh elementum finibus. Maecenas eget fermentum ipsum. Sed sagittis condimentum nisl at tempus. Duis lacus libero, laoreet vitae ligula a, aliquet eleifend sapien. Nullam sodales viverra sodales.</div>
       </div>
     </div>
+      
+      
+      
+           <div id="popoverUsuario" class="popover popover-links">
+    <div class="popover-angle"></div>
+    <div class="popover-inner">
+      <div class="list-block">
+        <ul>
+          <li><a href="#" class="list-button item-link">Mi Cuenta</a></li>
+          <li><a href="#" class="list-button item-link">Cambiar Contraseña</a></li>
+          <li><a id="logout" class="list-button item-link">Salir</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+      
+      
+      
+      
+      
       <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="js/framework7.js"></script>
     <script type="text/javascript" src="js/home.js"></script>
     <script>
       document.getElementById("nombreUsuario").innerHTML = localStorage.getItem("nombreUsuario");
-      
+     
+    $("#logout").on("click", function(e){
+        e.preventDefault();
+        window.location="index.html";
+        
+    });
       </script>
       <style>
           #popoverUsuario{
@@ -634,18 +659,7 @@
           }
       </style>
       
-      <div id="popoverUsuario" class="popover popover-links">
-    <div class="popover-angle"></div>
-    <div class="popover-inner">
-      <div class="list-block">
-        <ul>
-          <li><a href="#" class="list-button item-link">Mi Cuenta</a></li>
-          <li><a href="#" class="list-button item-link">Cambiar Contraseña</a></li>
-          <li><a href="index.html" id="logout-button" class="close-popover close-panel list-button item-link">Salir</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
+ 
       
   </body>
 </html>
