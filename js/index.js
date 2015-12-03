@@ -15,20 +15,20 @@ var $$ = Dom7;
 var mainView = myApp.addView('.view-main', {
 });
 
-//var id = localStorage.getItem("regId");
-//var nombreUsuario = localStorage.getItem("nombreUsuario");
-//
-//if(id === null || nombreUsuario === null)
-//    {
-//        console.log(id+nombreUsuario);
-//         window.location =("#");
-//    }
-//   
-////else
-////    {
-////        console.log(id+nombreUsuario);
-////        window.location =("home.html");
-////    }
+var id = localStorage.getItem("regId");
+var nombreUsuario = localStorage.getItem("nombreUsuario");
+
+if(id === null || nombreUsuario === null)
+    {
+        console.log(id+nombreUsuario);
+         //window.location =("#");
+    }
+   
+else
+    {
+        console.log(id+nombreUsuario);
+        window.location =("home.html");
+    }
 $("#login-button").click(function(event){
             event.preventDefault();
 	        var email = $("#email").val();

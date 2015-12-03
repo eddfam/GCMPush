@@ -78,6 +78,4 @@ var app = {
         });
     }
 };
-
-
 app.initialize();
