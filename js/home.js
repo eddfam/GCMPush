@@ -33,6 +33,8 @@ ptrContent.on('refresh', function (e) {
                 timeout:60000,
                 success:function(data){
                     $("#result").html("");
+                    clear();
+                    add(data);
                     for(var i in data){
                     $("#result").append(
 
@@ -56,29 +58,66 @@ ptrContent.on('refresh', function (e) {
 });
 
 var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
+var dataBase = null;
             
-            function startDB() {
+
+function startDB() {
             
-                dataBase = indexedDB.open("database", 1);
-                
-                dataBase.onupgradeneeded = function (e) {
+    dataBase = indexedDB.open("database", 1);
 
-                    active = dataBase.result;
-                    
-                    object = active.createObjectStore("noticias", { keyPath : 'id', autoIncrement : true });
-                    object.createIndex('by_idServer', 'idServer', { unique : true });
-                    object.createIndex('by_fecha', 'fecha', { unique : true });
-                };
+    dataBase.onupgradeneeded = function (e) {
 
-                dataBase.onsuccess = function (e) {
-                    alert('Base de datos cargada correctamente');
-        
-                };
-        
-                dataBase.onerror = function (e)  {
-                    alert('Error cargando la base de datos');
-                };
-            }
+        active = dataBase.result;
+
+        object = active.createObjectStore("noticias", { keyPath : 'id', autoIncrement : true });
+        object.createIndex('by_idServer', 'idServer', { unique : true });
+        object.createIndex('by_fecha', 'fecha', { unique : true });
+    };
+
+    dataBase.onsuccess = function (e) {
+        alert('Base de datos cargada correctamente');
+
+    };
+
+    dataBase.onerror = function (e)  {
+        alert('Error cargando la base de datos');
+    };
+}
+function add(datos) {
+    var active = dataBase.result;
+    var data = active.transaction(["noticias"], "readwrite");
+    var object = data.objectStore("noticias");
+
+    /*var request = object.put({
+        dni: document.querySelector("#dni").value,
+        name: document.querySelector("#name").value,
+        surname: document.querySelector("#surname").value
+    });*/
+
+    for(var i=0;i<datos.length;i++){
+        var request=object.put({ //Añadimos un nuevo registro en la DB
+            titulo:datos[i].titulo,
+            descripcion:datos[i].descripcion,
+            fecha:datos[i].fecha,
+            serverId:datos[i].id
+        });
+
+    request.onerror = function (e) {
+        alert(request.error.name + '\n\n' + request.error.message);
+    };
+
+    data.oncomplete = function (e) {
+        alert('Objeto agregado correctamente');
+    };
+
+}
+}
+function clear() {
+    var active = dataBase.result;
+    var data = active.transaction(["noticias"], "readwrite");
+    var object = data.objectStore("noticias").clear();
+}
+
 
 var app = {
     // Application Constructor
