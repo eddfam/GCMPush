@@ -14,7 +14,71 @@ var $$ = Dom7;
 var mainView = myApp.addView('.view-main', {
     domCache: true //enable inline pages
 });
+// Pull to refresh content
+var ptrContent = $$('.pull-to-refresh-content');
+ 
+// Add 'refresh' listener on it
+ptrContent.on('refresh', function (e) {
+    setTimeout(function () {
+            
+        
+        $.ajax({
+                url:'http://desde9.esy.es/noticias.php',
+                type:'POST',
+               
+                dataType:'json',
+                error:function(jqXHR,text_status,strError){
+                    alert('no connection');
+                }, 
+                timeout:60000,
+                success:function(data){
+                    $("#result").html("");
+                    for(var i in data){
+                    $("#result").append(
 
+                       '<div class="card">'
+                            +'<div class="card-header">'+data[i].titulo+'</div>'
+                            +'<div class="card-content">'
+                            +'<div class="card-content-inner">'+data[i].descripcion+'</div>'
+                            +'</div>'
+                            +'<div class="card-footer">'+data[i].fecha+'</div>'
+                        +'</div>'
+
+                        /*"<li>"+JSON.stringify(data[i].descripcion)+"</li>"*/);
+                }
+                }
+            });
+        
+        
+            // When loading done, we need to "close" it
+            myApp.pullToRefreshDone();
+        }, 2000);
+});
+
+var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
+            
+            function startDB() {
+            
+                dataBase = indexedDB.open("database", 1);
+                
+                dataBase.onupgradeneeded = function (e) {
+
+                    active = dataBase.result;
+                    
+                    object = active.createObjectStore("noticias", { keyPath : 'id', autoIncrement : true });
+                    object.createIndex('by_idServer', 'idServer', { unique : true });
+                    object.createIndex('by_fecha', 'fecha', { unique : true });
+                };
+
+                dataBase.onsuccess = function (e) {
+                    alert('Base de datos cargada correctamente');
+        
+                };
+        
+                dataBase.onerror = function (e)  {
+                    alert('Error cargando la base de datos');
+                };
+            }
 
 var app = {
     // Application Constructor

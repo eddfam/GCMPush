@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="css/home.css">
     <link rel="icon" href="img/cordova_bot.png">
   </head>
-  <body>
+  <body onload="startDB();">
     <div class="statusbar-overlay"></div>
     <div class="panel-overlay"></div>
     <div class="panel panel-left panel-cover">
@@ -147,7 +147,7 @@
               <div class="content-block-title">Framework7 Kitchen Sink</div>
               <div class="list-block">
                 <ul>
-                  <li><a href="#accordion" class="item-link">
+                  <li><a  href="#accordion" class="item-link">
                       <div class="item-content">
                         <div class="item-media"><i class="icon icon-cordova-96"></i></div>
                         <div class="item-inner">
@@ -308,36 +308,18 @@
       <div class="right"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
     </div>
   </div>
-  <div class="page-content">
-    <div class="content-block-title">Noticias</div>
-    <div> 
-        <div><center><b>Bikes or Cars</b></center> 
-        <center><input onclick="connect()" type="button" value="cars" /></center> 
-        <center><input onclick="connect()" type="button" value="bikes" /></center> 
-        <center><b>Results</b></center> 
-        <ul id="result"></ul></div> 
+  <div class="page-content pull-to-refresh-content">
+  <div class="pull-to-refresh-layer">
+      <div class="preloader"></div>
+      <div class="pull-to-refresh-arrow"></div>
     </div>
-    <script charset="utf−8" type="text/javascript"> 
-        function connect(){
-           
-            $.ajax({
-                url:'http://desde9.esy.es/noticias.php',
-                type:'POST',
-               
-                dataType:'json',
-                error:function(jqXHR,text_status,strError){
-                    alert('no connection');
-                }, 
-                timeout:60000,
-                success:function(data){
-                    $("#result").html("");
-                    for(var i in data){
-                        $("#result").append("<li>"+JSON.stringify(data[1])+"</li>");
-                    }
-                }
-            });}
-      </script>
-  </div>
+ 
+    <div class="content-block-title">Noticias</div>
+        <div id="result"> <center class="content-block-title">tira para refrescar</center></div>
+  
+    </div>
+
+
 </div> <!-- END accordion page -->
          
        <!-- calendar page --> 
