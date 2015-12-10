@@ -15,7 +15,7 @@ var mainView = myApp.addView('.view-main', {
     domCache: true //enable inline pages
 });
 // Pull to refresh content
-var ptrContent = $$('.pull-to-refresh-content');
+var ptrContent = $$('.pull-to-refresh-content.noticias');
  
 // Add 'refresh' listener on it
 ptrContent.on('refresh', function (e) {
@@ -35,6 +35,45 @@ ptrContent.on('refresh', function (e) {
                     add(data);
                     for(var i in data){
                     $("#result").append(
+
+                       '<div class="card">'
+                            +'<div class="card-header">'+data[i].titulo+'</div>'
+                            +'<div class="card-content">'
+                            +'<div class="card-content-inner">'+data[i].descripcion+'</div>'
+                            +'</div>'
+                            +'<div class="card-footer">'+data[i].fecha+'</div>'
+                        +'</div>'
+
+                        /*"<li>"+JSON.stringify(data[i].descripcion)+"</li>"*/);
+                }
+                }
+            });
+        
+        
+            // When loading done, we need to "close" it
+            myApp.pullToRefreshDone();
+        }, 2000);
+});
+var ptrContent = $$('.pull-to-refresh-content.publicaciones');
+ 
+// Add 'refresh' listener on it
+ptrContent.on('refresh', function (e) {
+    setTimeout(function () {
+        $.ajax({
+                url:'http://desde9.esy.es/noticias.php',
+                type:'POST',
+               
+                dataType:'json',
+                error:function(jqXHR,text_status,strError){
+                    alert('no internet connection');
+                }, 
+                timeout:60000,
+                success:function(data){
+                    $("#publicaciones").html("");
+//                    clear();
+//                    add(data);
+                    for(var i in data){
+                    $("#publicaciones").append(
 
                        '<div class="card">'
                             +'<div class="card-header">'+data[i].titulo+'</div>'
