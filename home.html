@@ -43,11 +43,11 @@
               <div class="content-block-title">Framework7 Kitchen Sink</div>
               <div class="list-block">
                 <ul>
-                  <li><a href="#forms" class="item-link close-panel">
+                  <li><a onclick="cargarIDB();"  href="#noticias" class="item-link close-panel">
                       <div class="item-content">
-                        <div class="item-media"><i class="icon icon-f7"></i></div>
+                        <div class="item-media"><i class="icon icon-cordova-96"></i></div>
                         <div class="item-inner">
-                          <div class="item-title">Forms</div>
+                          <div class="item-title">Noticias</div>
                         </div>
                       </div></a></li>
                   <li><a href="#list-view" class="item-link close-panel">
@@ -102,7 +102,7 @@
           <div data-page="panel-right1" class="page">
             <div class="navbar">
               <div class="navbar-inner">
-                <div class="center">Right Panel</div>
+                <div class="center">Notificaciones</div>
               </div>
             </div>
             <div class="page-content">
@@ -139,107 +139,22 @@
               <div class="navbar-inner">                
                 <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
                 <div class="center">Inicio</div>
+                <div class="right">
+                <a href="#"  data-panel="right" class="open-panel link icon-only"><i class="icon icon-notification"></i></a>
+                <a href="#" class="link icon-only"><i class="icon icon-more"></i></a></div>
               </div>
             </div>
             <div class="page-content">
-              <div class="content-block-title">App Notificaciones</div>
+              <div class="content-block-title">Publicaciones</div>
+<!--
               <div class="content-block"><a href="#about" class="button button-raised">About Framework7</a></div>
               <div class="content-block-title">Framework7 Kitchen Sink</div>
+-->
               <div class="list-block">
-                <ul>
-                  <li><a onclick="cargarIDB();" href="#accordion" class="item-link">
-                      <div class="item-content">
-                        <div class="item-media"><i class="icon icon-cordova-96"></i></div>
-                        <div class="item-inner">
-                          <div class="item-title">Noticias</div>
-                        </div>
-                      </div></a></li>
-                  <li><a href="#calendar" class="item-link">
-                      <div class="item-content">
-                        <div class="item-media"><i class="icon icon-cordova-96"></i></div>
-                        <div class="item-inner">
-                          <div class="item-title">Calendar / Datepicker</div>
-                          <div class="item-after"><span class="badge bg-green">NEW</span></div>
-                        </div>
-                      </div></a></li>
-                  <li><a href="#cards" class="item-link">
-                      <div class="item-content">
-                        <div class="item-media"><i class="icon icon-cordova-96"></i></div>
-                        <div class="item-inner">
-                          <div class="item-title">Cards</div>
-                        </div>
-                      </div></a></li>
-                  <li><a href="#contacts" class="item-link">
-                      <div class="item-content">
-                        <div class="item-media"><i class="icon icon-cordova-96"></i></div>
-                        <div class="item-inner">
-                          <div class="item-title">Contacts List</div>
-                        </div>
-                      </div></a></li>
-                  <li><a href="#chips" class="item-link">
-                      <div class="item-content">
-                        <div class="item-media"><i class="icon icon-cordova-96"></i></div>
-                        <div class="item-inner">
-                          <div class="item-title">Chips</div>
-                          <div class="item-after"><span class="badge bg-green">NEW</span></div>
-                        </div>
-                      </div></a></li>
-                  <li><a href="#floating-button" class="item-link">
-                      <div class="item-content">
-                        <div class="item-media"><i class="icon icon-cordova-96"></i></div>
-                        <div class="item-inner">
-                          <div class="item-title">Floating Action Button</div>
-                        </div>
-                      </div></a></li>
-                  <li><a href="#forms" class="item-link">
-                      <div class="item-content">
-                        <div class="item-media"><i class="icon icon-cordova-96"></i></div>
-                        <div class="item-inner">
-                          <div class="item-title">Forms</div>
-                        </div>
-                      </div></a></li>
-                  <li><a href="#grid" class="item-link">
-                      <div class="item-content">
-                        <div class="item-media"><i class="icon icon-cordova-96"></i></div>
-                        <div class="item-inner">
-                          <div class="item-title">Grid</div>
-                        </div>
-                      </div></a></li>
-                </ul>
-              </div>
-              <div class="list-block">
-                <ul>
-                  <li><a href="#color-themes" class="item-link">
-                      <div class="item-content">
-                        <div class="item-media"><i class="icon icon-cordova-96"></i></div>
-                        <div class="item-inner">
-                          <div class="item-title">Color Themes</div>
-                        </div>
-                      </div></a></li>
-                  <li><a href="#" class="item-link ks-generate-page">
-                      <div class="item-content">
-                        <div class="item-media"><i class="icon icon-cordova-96"></i></div>
-                        <div class="item-inner">
-                          <div class="item-title">Dynamically Generated Content</div>
-                        </div>
-                      </div></a></li>
-                </ul>
-              </div>
-              <div class="list-block">
-                <ul>
-                  <li><a href="core-features.html" class="item-link ks-generate-page">
-                      <div class="item-content">
-                        <div class="item-media"><i class="icon icon-cordova-96"></i></div>
-                        <div class="item-inner">
-                          <div class="item-title">Core Features</div>
-                        </div>
-                      </div></a></li>
-                </ul>
               </div>
             </div>
-          </div>    
-
-          <!-- Forms page -->
+          </div>
+<!-- Forms page -->
           <div data-page="forms" class="page cached">
   <div class="navbar">
     <div class="navbar-inner">
@@ -292,15 +207,9 @@
       </ul>
     </div>
   </div>
-</div> <!-- END Forms page -->
-         
-            
-            
-            
-            
-            
-            <!-- Accordion page -->
-            <div data-page="accordion" class="page cached">
+</div> <!-- END Forms page -->            
+<!-- Noticias page -->
+            <div data-page="noticias" class="page cached">
   <div class="navbar">
     <div class="navbar-inner">
       <div class="left"><a href="index.html" class="back link icon-only"><i class="icon icon-back"></i></a></div>
@@ -320,7 +229,7 @@
     </div>
 
 
-</div> <!-- END accordion page -->
+</div> <!-- END Noticias page -->
          
        <!-- calendar page --> 
        <div data-page="calendar" class="page cached">
@@ -407,110 +316,25 @@
         </div>
       </div>
     </div>
-    <div class="popup demo-popup">
-      <div class="view navbar-fixed">
-        <div class="pages">
-          <div class="page">
-            <div class="navbar">
-              <div class="navbar-inner">
-                <div class="center">Popup Title</div>
-                <div class="right"><a href="#" class="link close-popup">Done</a></div>
-              </div>
-            </div>
-            <div class="page-content">
-              <div class="content-block">
-                <p>Here comes popup. You can put here anything, even independent view with its own navigation. Also not, that by default popup looks a bit different on iPhone/iPod and iPad, on iPhone it is fullscreen.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="popover popover-menu">
-      <div class="popover-angle"></div>
-      <div class="popover-inner">
-        <div class="list-block">
-          <ul>
-            <li><a href="modals.html" class="list-button item-link">Modals</a></li>
-            <li><a href="popover.html" class="list-button item-link">Popover</a></li>
-            <li><a href="tabs.html" class="list-button item-link">Tabs</a></li>
-            <li><a href="panels.html" class="list-button item-link">Side Panels</a></li>
-            <li><a href="list-view.html" class="list-button item-link">List View</a></li>
-            <li><a href="forms.html" class="list-button item-link">Forms</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="popover popover-music">
-      <div class="popover-angle"></div>
-      <div class="popover-inner">
-        <div class="list-block media-list">
-          <ul>
-            <li><a href="#" class="item-link item-content">
-                <div class="item-media"><img src="http://lorempixel.com/88/88/people/1" width="44"></div>
-                <div class="item-inner">
-                  <div class="item-title-row">
-                    <div class="item-title">Yellow Submarine</div>
-                  </div>
-                  <div class="item-subtitle">Beatles</div>
-                </div></a></li>
-            <li><a href="#" class="item-link item-content">
-                <div class="item-media"><img src="http://lorempixel.com/88/88/people/2" width="44"></div>
-                <div class="item-inner">
-                  <div class="item-title-row">
-                    <div class="item-title">Don't Stop Me Now</div>
-                  </div>
-                  <div class="item-subtitle">Queen</div>
-                </div></a></li>
-            <li><a href="#" class="item-link item-content">
-                <div class="item-media"><img src="http://lorempixel.com/88/88/people/3" width="44"></div>
-                <div class="item-inner">
-                  <div class="item-title-row">
-                    <div class="item-title">Billie Jean</div>
-                  </div>
-                  <div class="item-subtitle">Michael Jackson</div>
-                </div></a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
 
-    <div class="picker-modal picker-modal-demo">
-      <div class="toolbar">
-        <div class="toolbar-inner">
-          <div class="left"></div>
-          <div class="right"><a href="#" class="link close-picker">Done</a></div>
-        </div>
-      </div>
-      <div class="picker-modal-inner">
-        <div class="content-block">Integer mollis nulla id nibh elementum finibus. Maecenas eget fermentum ipsum. Sed sagittis condimentum nisl at tempus. Duis lacus libero, laoreet vitae ligula a, aliquet eleifend sapien. Nullam sodales viverra sodales.</div>
-      </div>
-    </div>
-      
-      
-      
-           <div id="popoverUsuario" class="popover popover-links">
+    
+    <div id="popoverUsuario" class="popover popover-links">
     <div class="popover-angle"></div>
     <div class="popover-inner">
       <div class="list-block">
         <ul>
           <li><a href="#" class="list-button item-link">Mi Cuenta</a></li>
-          <li><a href="#" class="list-button item-link">Cambiar Contraseña</a></li>
+          <li><a href="#" class="list-button item-link">Cambiar Contraseña </a></li>
           <li><a id="logout" class="list-button item-link">Salir</a></li>
         </ul>
       </div>
     </div>
   </div>
-      
-      
-      
-      
-      
-      <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="js/framework7.js"></script>
-    <script type="text/javascript" src="js/home.js"></script>
-    <script>
+   <script type="text/javascript" src="cordova.js"></script>
+   <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+   <script type="text/javascript" src="js/framework7.js"></script>
+   <script type="text/javascript" src="js/home.js"></script>
+   <script>
       document.getElementById("nombreUsuario").innerHTML = localStorage.getItem("nombreUsuario");
      
     $("#logout").on("click", function(e){
