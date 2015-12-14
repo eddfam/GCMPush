@@ -26,19 +26,19 @@ var $$ = Dom7;
 var mainView = myApp.addView('.view-main', {
 });
 
-var id = localStorage.getItem("regId");
-var nombreUsuario = localStorage.getItem("nombreUsuario");
+var logueado = localStorage.getItem("logueado");
 
-if(id === null || nombreUsuario === null)
+
+if(logueado == "si")
     {
-        console.log(id+nombreUsuario);
-         //window.location =("#");
+        console.log(logueado);
+         window.location =("home.html");
     }
    
 else
     {
-        console.log(id+nombreUsuario);
-        window.location =("home.html");
+        console.log(logueado);
+        window.location =("#");
     }
 $("#login-button").click(function(event){
             event.preventDefault();
@@ -65,8 +65,10 @@ $("#login-button").click(function(event){
                      dataType : 'jsonp',
                      success: function(data) {
                          if(data.estatus == true){
+                             window.localStorage.setItem("logueado", "si");
                              console.log(data.mensaje);
                              alert(data.mensaje);
+                             
                              window.location =("home.html");
                          }else{
                              alert("Error : "+data.mensaje);

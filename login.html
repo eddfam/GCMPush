@@ -139,6 +139,7 @@
                  return alert('Esperando asignacion de GSM-ID asegurese de estar conectado a internet');
              }else{
                  window.localStorage.setItem("nombreUsuario", nombre);
+                 window.localStorage.setItem("logueado", "si");
                  console.log(window.localStorage.getItem("regId"));
                  console.log(window.localStorage.getItem("nombreUsuario"));
                  $.ajax({
