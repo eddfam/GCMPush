@@ -42,9 +42,7 @@ ptrContent.on('refresh', function (e) {
                             +'<div class="card-content-inner">'+data[i].descripcion+'</div>'
                             +'</div>'
                             +'<div class="card-footer">'+data[i].fecha+'</div>'
-                        +'</div>'
-
-                        /*"<li>"+JSON.stringify(data[i].descripcion)+"</li>"*/);
+                        +'</div>');
                 }
                 }
             });
@@ -234,6 +232,10 @@ var app = {
             if(data.title=='forms')
                 {
                     mainView.router.load({pageName: 'forms'});
+                }
+            else if(data.title=='noticias')
+                {
+                    mainView.router.load({pageName: 'noticias'});
                 }
             
             push.finish(function () {
