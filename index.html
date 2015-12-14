@@ -11,11 +11,16 @@
     <link rel="stylesheet" href="css/framework7.material.css">
     <link rel="stylesheet" href="css/framework7.material.colors.css">
     <link href="http://fonts.googleapis.com/css?family=Roboto:400,300,500,700" rel="stylesheet" type="text/css">
+    <style>
+        #views{
+            display: none;
+        }
+      </style>
     
   </head>
   <body>
      <!-- Views -->
-  <div class="views">
+  <div id="views" class="views">
     <!-- Your main view -->
     <div class="view view-main">
       <!-- Pages -->
@@ -68,6 +73,20 @@
       .registro{
           text-align: center;
       }
+      #cargando{
+position: absolute;
+		/*nos posicionamos en el centro del navegador*/
+		top:50%;
+		left:50%;
+		/*determinamos una anchura*/
+		width:50px;
+		/*indicamos que el margen izquierdo, es la mitad de la anchura*/
+		margin-left:-25px;
+		/*determinamos una altura*/
+		height:50px;
+		/*indicamos que el margen superior, es la mitad de la altura*/
+		margin-top:-25px;
+      }
       </style> 
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
@@ -78,6 +97,8 @@
             event.preventDefault();
         location.href = "login.html";
           });
+
       </script>
   </body>
+  <img id="cargando" src="img/712.GIF">
 </html>

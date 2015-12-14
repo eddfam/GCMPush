@@ -1,4 +1,15 @@
-
+$(document).ready(function ( ) {
+    
+    $("#cargando").show();
+    setTimeout(function() {
+        $("#cargando").hide();
+    },3000);
+    setTimeout(function(){
+        $("#views").show();
+    },3000);
+    
+    
+});
 // Init App
 var myApp = new Framework7({
     modalTitle: 'Framework7',
