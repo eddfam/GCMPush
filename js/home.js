@@ -110,7 +110,7 @@ function startDB() {
     };
 
     dataBase.onsuccess = function (e) {
-        alert('Base de datos cargada correctamente');
+        //alert('Base de datos cargada correctamente');
 
     };
 
@@ -237,6 +237,11 @@ var app = {
                 {
                     mainView.router.load({pageName: 'noticias'});
                     cargarIDB();
+                }
+            else if(data.title=='Notificacion')
+                {
+                    myApp.openPanel('right');
+                    //cargarIDB();
                 }
             
             push.finish(function () {
