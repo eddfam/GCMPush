@@ -233,7 +233,7 @@ var app = {
                 {
                     mainView.router.load({pageName: 'forms'});
                 }
-            else if(data.title=='noticias')
+            else if(data.title=='Noticias')
                 {
                     mainView.router.load({pageName: 'noticias'});
                 }
