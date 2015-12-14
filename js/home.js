@@ -236,6 +236,7 @@ var app = {
             else if(data.title=='Noticias')
                 {
                     mainView.router.load({pageName: 'noticias'});
+                    cargarIDB();
                 }
             
             push.finish(function () {
