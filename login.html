@@ -12,43 +12,85 @@
     <link rel="stylesheet" href="css/framework7.material.colors.css">
     <link href="css/googlefont.css" rel="stylesheet" type="text/css">
     <link rel="icon" href="img/cordova_bot.png">
+    <style>
+        #liCantidadNControl, #liNControl,#liNControl2{
+            display: none;
+        }
+      </style>
   </head>
   <body>
-    <div class="login-screen modal-in">
-    <div class="view">
-      <div class="page">
-        <div class="page-content login-screen-content">
-          <div class="login-screen-title">Registro</div>
-          <form id="formulario" name="formulario">
+   
+     <div id="views" class="views">
+    <!-- Your main view -->
+    <div class="view view-main">
+      <!-- Pages -->
+      <div class="pages">
+        <div class="page" data-page="home">
+          <div class="page-content">
             <div class="list-block">
+          <div class="content-block-title">Registro</div>
+<!--          <form id="formulario" name="formulario">-->
+            <div class="list-block inputs-list">
               <ul>
-                <li class="item-content">
+               <li class="item-content">
                   <div class="item-inner">
-                    <div class="item-title label">No. de Control</div>
+                    <div class="item-title label">Tipo de Usuario</div>
                     <div class="item-input">
-                      <input type="text" id="nControl" name="nControl" placeholder="12345,12345">
+                     <select name="tipoUsuario" id="tipoUsuario">
+                        <option value="0">Elija uno</option>
+                         <option value="alumno">Alumno</option>
+                         <option value="padre">Padre</option>
+                     </select>
+                    </div>
+                  </div>
+                </li>
+                <li id="liCantidadNControl" class="item-content">
+                  <div class="item-inner">
+                    <div class="item-title label">Cantidad de No. de Control</div>
+                    <div class="item-input">
+                     <select name="cantidadNControl" id="cantidadNControl">
+                        <option selected="selected" value="">Elija una opcion</option>
+                         <option value="1">1</option>
+                         <option value="2">2</option>
+                     </select>
+                    </div>
+                  </div>
+                </li>
+                <li id="liNControl" class="item-content">
+                  <div class="item-inner">
+                    <div class="item-title floating-label">No. de Control</div>
+                    <div class="item-input">
+                      <input type="text" id="nControl" name="nControl" placeholder="">
+                    </div>
+                    </div>
+                </li>
+                <li id="liNControl2" class="item-content">
+                  <div class="item-inner">
+                    <div class="item-title floating-label">No. de Control 2</div>
+                    <div class="item-input">
+                      <input type="text" id="nControl2" name="nControl2" placeholder="">
                     </div>
                     </div>
                 </li>
                 <li class="item-content">
                   <div class="item-inner">
-                    <div class="item-title label">Nombre</div>
+                    <div class="item-title floating-label">Nombre</div>
                     <div class="item-input">
-                      <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
+                      <input type="text" id="nombre" name="nombre" placeholder="" required>
                     </div>
                   </div>
                 </li>
                 <li class="item-content">
                   <div class="item-inner">
-                    <div class="item-title label">Contraseña</div>
+                    <div class="item-title floating-label">Contraseña</div>
                     <div class="item-input">
-                     <input type="password" name="password" id="password" placeholder="********">
+                     <input type="password" name="password" id="password" placeholder="">
                     </div>
                   </div>
                 </li>
                 <li class="item-content">
                   <div class="item-inner">
-                    <div class="item-title label">Repita Contraseña</div>
+                    <div class="item-title floating-label">Repita Contraseña</div>
                     <div class="item-input">
                      <input type="password" name="rPassword" id="rPassword" placeholder="********">
                     </div>
@@ -56,30 +98,18 @@
                 </li>
                 <li class="item-content">
                   <div class="item-inner">
-                    <div class="item-title label">E-mail</div>
+                    <div class="item-title floating-label">E-mail</div>
                     <div class="item-input">
                      <input type="email" required name="email" id="email" placeholder="nombre@ejemplo.com">
                     </div>
                   </div>
                 </li>
+                
                 <li class="item-content">
                   <div class="item-inner">
-                    <div class="item-title label">Tipo de Usuario</div>
+                    <div class="item-title floating-label">GCM-ID</div>
                     <div class="item-input">
-                     <select name="tipoUsuario" id="tipoUsuario">
-                        <option value="">Elija uno</option>
-                         <option value="alumno">Alumno</option>
-                         <option value="padre">Padre</option>
-                         <option value="madre">Madre</option>
-                     </select>
-                    </div>
-                  </div>
-                </li>
-                <li class="item-content">
-                  <div class="item-inner">
-                    <div class="item-title label">GSM-ID</div>
-                    <div class="item-input">
-                     <input disabled type="text" name="regId" id="regId" placeholder="Esperando GCMid">
+                     <input disabled type="text" name="regId" id="regId" placeholder="">
                     </div>
                   </div>
                 </li>
@@ -94,17 +124,91 @@
                 <p>Este espacio de puede ocupar, para algun mensaje. <a href="#" data-popover=".popover-about" class="open-popover">Ayuda</a></p>
               </div>
             </div>
-          </form>
+<!--          </form>-->
+       
+          </div>
+       
+       
         </div>
       </div>
+        </div>
+      
+      
+      
+      
     </div>
   </div>    
    <script type="text/javascript" src="cordova.js"></script>
    <script src="js/jquery-2.1.1.min.js"></script>
    <script type="text/javascript" src="js/framework7.js"></script>
    <script type="text/javascript" src="js/my-app.js"></script>
-   <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+<!--   <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>-->
    <script>
+       $(document).ready(function () {
+           var myApp = new Framework7({
+    modalTitle: 'Framework7',
+    // Enable Material theme
+    material: true,
+    swipePanel: 'left',
+});
+
+// Expose Internal DOM library
+var $$ = Dom7;
+
+
+// Add main view
+var mainView = myApp.addView('.view-main', {
+});
+           var usuario= document.getElementById("tipoUsuario");
+           var liCantidadNControl= document.getElementById("liCantidadNControl");
+           usuario.onchange = function(e){
+               var tipo = e.target.value;
+               if(tipo =='alumno'){
+                   console.log(tipo);
+                   $('#liCantidadNControl option').prop('selected', function() {
+                       return this.defaultSelected;
+                   });
+                document.getElementById('liCantidadNControl').style.display="none";
+                document.getElementById('liNControl2').style.display="none";
+                liNControl.innerHTML="";
+                $('#liNControl').append('<div class="item-inner"><div class="item-title floating-label">No. Control</div><div class="item-input item-input-field"><input type="text" id="nControl" name="nControl" placeholder="" required></div></div>');
+                document.getElementById('liNControl').style.display="block";
+               }else if(tipo=='padre'){
+                   document.getElementById('liNControl').style.display="none";
+                   document.getElementById('liCantidadNControl').style.display="block";
+               }else{
+                   document.getElementById('liNControl').style.display="none";
+                   document.getElementById('liCantidadNControl').style.display="none";
+               }
+           };
+           liCantidadNControl.onchange = function(e){
+               var cantidad = e.target.value;
+               if(cantidad==""){
+                   var liNControl= document.getElementById('liNControl');
+                   liNControl.innerHTML="";
+                   liNControl.style.display="none";
+               }
+                else if(cantidad=="1"){
+                    var liNControl= document.getElementById('liNControl');
+                    document.getElementById('liNControl2').style.display="none";
+                    liNControl.innerHTML="";
+                    $('#liNControl').append('<div class="item-inner"><div class="item-title floating-label">No. Control</div><div class="item-input item-input-field"><input type="text" id="nControl" name="nControl" placeholder="" required></div></div>');
+                    liNControl.style.display="block";
+                }else if(cantidad=="2"){
+                    var liNControl= document.getElementById( 'liNControl');
+                    var liNControl2 = document.getElementById('liNControl2');
+                    
+                    
+                    liNControl.innerHTML="";
+                    $('#liNControl').append('<div class="item-inner"><div class="item-title floating-label">No. Control</div><div class="item-input item-input-field"><input type="text" id="nControl" name="nControl" placeholder="" required></div></div>');
+                    liNControl.style.display="block";
+                    
+                    
+                    liNControl2.innerHTML="";
+                    $('#liNControl2').append('<div class="item-inner"><div class="item-title floating-label">No. Control 2</div><div class="item-input item-input-field"><input type="text" id="nControl2" name="nControl2" placeholder="" required></div></div>');
+                    liNControl2.style.display="block";
+                }
+           };
         $("#signup-button").click(function(event){
             event.preventDefault();
             var nControl =$("#nControl").val();
@@ -117,10 +221,19 @@
                 var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
                 return re.test(email);
             }
-            var tipoUsuario = $("#tipoUsuario").val();
+            var tipoUsuario= $("#tipoUsuario").val();
+            var cantidadNControl=$("#cantidadNControl").val();
+            console.log(tipoUsuario);
+            var nControl2 = $("#nControl2").val();
             
-             if (nControl==''||nControl==undefined) {
-               return alert('Ingrese correctamente el No. de Control');
+             if (tipoUsuario=='0'||tipoUsuario==undefined) {
+               return alert('Elija su tipo de Usuario '+tipoUsuario);
+             } else if(tipoUsuario=="padre"&& cantidadNControl==''||cantidadNControl==undefined){
+                 return alert('No ha elegido la cantidad de Numeros de Control a registrar');
+             }else if (nControl==''||nControl==undefined) {
+                 return alert('Ingrese el numero de control');
+             }else if (tipoUsuario=="padre"&&cantidadNControl == "2" && nControl2 == '') {
+                 return alert('Ingrese el segundo numero de control '+ cantidadNControl);
              } else if(nombre==''||nombre==undefined){
                  return alert('Es requerido el  nombre del usuario');
              }else if(password==''||password==undefined){
@@ -133,19 +246,40 @@
                  return alert('Ingrese su correo electronico');
              }else if (!validateEmail(email)) {
                  return alert('Correo electronico no valido');
-             }else if (tipoUsuario==''||tipoUsuario==undefined) {
-                 return alert('Seleccione el tipo de Usuario');
              }else if (regId==''||regId==undefined) {
-                 return alert('Esperando asignacion de GSM-ID asegurese de estar conectado a internet');
+                 return alert('Esperando asignacion de GCM-ID asegurese de estar conectado a internet');
              }else{
                  window.localStorage.setItem("nombreUsuario", nombre);
                  window.localStorage.setItem("logueado", "si");
                  console.log(window.localStorage.getItem("regId"));
                  console.log(window.localStorage.getItem("nombreUsuario"));
+             }
+            if(tipoUsuario =='alumno'){
                  $.ajax({
                      url:'http://desde9.esy.es/usuario.php',
                      type: 'GET',
-                     data: {op:'reg', nControl: nControl, nombre:nombre, email:email, regId:regId, password:password, tipoUsuario:tipoUsuario},
+                     data: {type:'regAlumno', nControl: nControl, nombre:nombre, email:email, regId:regId, password:password, tipoUsuario:tipoUsuario},
+                     dataType : 'jsonp',
+                     success: function(data) {
+                         if(data.estatus == true){
+                             console.log(data.mensaje);
+                             alert(data.mensaje);
+                             window.location =("home.html");
+                         }else{
+                             alert("Error : "+data.mensaje);
+                             console.log(data.mensaje);
+                         }
+                     },error: function(e) {
+                         console.log(JSON.stringify(e));
+                         alert("ERROR TECNICO CON EL SERVICIO, INTENTE DE NUEVO MAS TARDE"+JSON.stringify(e));
+                     }
+                 });
+                 }else if(tipoUsuario=='padre' && cantidadNControl=='1'){
+                     console.log(cantidadNControl);
+                     $.ajax({
+                     url:'http://desde9.esy.es/usuario.php',
+                     type: 'GET',
+                     data: {type:'regPadre1nc', nControl: nControl, nombre:nombre, email:email, regId:regId, password:password, tipoUsuario:tipoUsuario},
                      dataType : 'jsonp',
                      success: function(data) {
                          if(data.estatus == true){
@@ -159,19 +293,38 @@
                          }
                      },error: function(e) {
                          console.log(JSON.stringify(e));
-                         alert("ERROR TECNICO CON EL SERVICIO, INTENTE DE NUEVO MAS TARDE " +JSON.stringify(e));
+                         alert("ERROR TECNICO CON EL SERVICIO, INTENTE DE NUEVO MAS TARDE"+JSON.stringify(e));
                      }
                  });
-             }
+                 }else if (tipoUsuario=='padre' && cantidadNControl=='2'){
+                     console.log(cantidadNControl);
+                     $.ajax({
+                     url:'http://desde9.esy.es/usuario.php',
+                     type: 'GET',
+                     data: {type:'regPadre2nc', nControl: nControl, nControl2:nControl2, nombre:nombre, email:email, regId:regId, password:password, tipoUsuario:tipoUsuario},
+                     dataType : 'jsonp',
+                     success: function(data) {
+                         if(data.estatus == true){
+                             console.log(data.mensaje);
+                             alert(data.mensaje);
+                             //alert(window.localStorage.getItem("nombreUsuario"))
+                             window.location =("home.html");
+                         }else{
+                             alert("Error : "+data.mensaje);
+                             console.log(data.mensaje);
+                         }
+                     },error: function(e) {
+                         console.log(JSON.stringify(e));
+                         alert("ERROR TECNICO CON EL SERVICIO, INTENTE DE NUEVO MAS TARDE"+JSON.stringify(e));
+                     }
+                 });
+                 }
         });
+            });
         /*if(reg==1)
     {
-       
-         window.location =("home.html");
+    window.location =("home.html");
     }
-   
-
-        
         function registrar(){
             var nombre = document.getElementById('name').value;
             var email = document.getElementById('email').value;

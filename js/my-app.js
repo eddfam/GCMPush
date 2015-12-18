@@ -16,6 +16,8 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+// Init App
+
 var app = {
     // Application Constructor
     initialize: function() {
@@ -45,7 +47,7 @@ var app = {
             console.log("registration event");
             document.getElementById("regId").value = data.registrationId;
             console.log(data.registrationId);
-            alert(data.registrationId);
+            //alert(data.registrationId);
             window.localStorage.setItem("regId", data.registrationId);
             console.log(JSON.stringify(data));
         });
