@@ -60,7 +60,7 @@
                   <div class="item-inner">
                     <div class="item-title floating-label">No. de Control</div>
                     <div class="item-input">
-                      <input type="text" id="nControl" name="nControl" placeholder="">
+                      <input type="number" id="nControl" name="nControl" placeholder="">
                     </div>
                     </div>
                 </li>
@@ -68,7 +68,7 @@
                   <div class="item-inner">
                     <div class="item-title floating-label">No. de Control 2</div>
                     <div class="item-input">
-                      <input type="text" id="nControl2" name="nControl2" placeholder="">
+                      <input type="number" id="nControl2" name="nControl2" placeholder="">
                     </div>
                     </div>
                 </li>
@@ -171,7 +171,7 @@ var mainView = myApp.addView('.view-main', {
                 document.getElementById('liCantidadNControl').style.display="none";
                 document.getElementById('liNControl2').style.display="none";
                 liNControl.innerHTML="";
-                $('#liNControl').append('<div class="item-inner"><div class="item-title floating-label">No. Control</div><div class="item-input item-input-field"><input type="text" id="nControl" name="nControl" placeholder="" required></div></div>');
+                $('#liNControl').append('<div class="item-inner"><div class="item-title floating-label">No. Control</div><div class="item-input item-input-field"><input type="number" id="nControl" name="nControl" placeholder="" required></div></div>');
                 document.getElementById('liNControl').style.display="block";
                }else if(tipo=='padre'){
                    document.getElementById('liNControl').style.display="none";
@@ -192,7 +192,7 @@ var mainView = myApp.addView('.view-main', {
                     var liNControl= document.getElementById('liNControl');
                     document.getElementById('liNControl2').style.display="none";
                     liNControl.innerHTML="";
-                    $('#liNControl').append('<div class="item-inner"><div class="item-title floating-label">No. Control</div><div class="item-input item-input-field"><input type="text" id="nControl" name="nControl" placeholder="" required></div></div>');
+                    $('#liNControl').append('<div class="item-inner"><div class="item-title floating-label">No. Control</div><div class="item-input item-input-field"><input type="number" id="nControl" name="nControl" placeholder="" required></div></div>');
                     liNControl.style.display="block";
                 }else if(cantidad=="2"){
                     var liNControl= document.getElementById( 'liNControl');
@@ -200,12 +200,12 @@ var mainView = myApp.addView('.view-main', {
                     
                     
                     liNControl.innerHTML="";
-                    $('#liNControl').append('<div class="item-inner"><div class="item-title floating-label">No. Control</div><div class="item-input item-input-field"><input type="text" id="nControl" name="nControl" placeholder="" required></div></div>');
+                    $('#liNControl').append('<div class="item-inner"><div class="item-title floating-label">No. Control</div><div class="item-input item-input-field"><input type="number" id="nControl" name="nControl" placeholder="" required></div></div>');
                     liNControl.style.display="block";
                     
                     
                     liNControl2.innerHTML="";
-                    $('#liNControl2').append('<div class="item-inner"><div class="item-title floating-label">No. Control 2</div><div class="item-input item-input-field"><input type="text" id="nControl2" name="nControl2" placeholder="" required></div></div>');
+                    $('#liNControl2').append('<div class="item-inner"><div class="item-title floating-label">No. Control 2</div><div class="item-input item-input-field"><input type="number" id="nControl2" name="nControl2" placeholder="" required></div></div>');
                     liNControl2.style.display="block";
                 }
            };
