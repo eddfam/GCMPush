@@ -107,7 +107,7 @@
                 
                 <li class="item-content">
                   <div class="item-inner">
-                    <div class="item-title floating-label">GCM-ID</div>
+                    <div class="item-title label">GCM-ID</div>
                     <div class="item-input">
                      <input disabled type="text" name="regId" id="regId" placeholder="">
                     </div>
@@ -254,7 +254,49 @@ var mainView = myApp.addView('.view-main', {
                  console.log(window.localStorage.getItem("regId"));
                  console.log(window.localStorage.getItem("nombreUsuario"));
              }
+            var data;
             if(tipoUsuario =='alumno'){
+                data = {type:'regAlumno', nControl: nControl, nombre:nombre, email:email, regId:regId, password:password, tipoUsuario:tipoUsuario};
+            }else if(tipoUsuario=='padre' && cantidadNControl=='1'){
+                data= {type:'regPadre1nc', nControl: nControl, nombre:nombre, email:email, regId:regId, password:password, tipoUsuario:tipoUsuario};
+            }else if(tipoUsuario=='padre' && cantidadNControl=='2'){
+                data= {type:'regPadre2nc', nControl: nControl, nControl2:nControl2, nombre:nombre, email:email, regId:regId, password:password, tipoUsuario:tipoUsuario};
+            }
+            $.ajax({
+                     url:'http://desde9.esy.es/usuario.php',
+                     type: 'GET',
+                     data: data,
+                     dataType : 'jsonp',
+                     success: function(data) {
+                         if(data.estatus == true){
+                             if(tipoUsuario =='alumno'){
+                                 window.localStorage.setItem("nControl", data.nControl);
+                                 window.localStorage.setItem("tipo", data.tipo);                                 
+                             }else if(tipoUsuario=='padre' && cantidadNControl=='1'){
+                                 window.localStorage.setItem("nControl", data.nControl);
+                                 window.localStorage.setItem("tipo", data.tipo);
+                                 window.localStorage.setItem("cantidadNControl", data.numeroNControl);
+                             }else if(tipoUsuario=='padre' && cantidadNControl=='2'){
+                                 window.localStorage.setItem("nControl", data.nControl);
+                                 window.localStorage.setItem("nControl2", data.nControl2);
+                                 window.localStorage.setItem("tipo", data.tipo);
+                                 window.localStorage.setItem("cantidadNControl", data.numeroNControl);
+                             }
+                             
+                             console.log(data.mensaje);
+                             alert(data.mensaje);
+                             window.location =("home.html");
+                         }else{
+                             alert("Error : "+data.mensaje);
+                             console.log(data.mensaje);
+                         }
+                     },error: function(e) {
+                         console.log(JSON.stringify(e));
+                         alert("ERROR TECNICO CON EL SERVICIO, INTENTE DE NUEVO MAS TARDE"+JSON.stringify(e));
+                     }
+                 });
+           
+            /*if(tipoUsuario =='alumno'){
                  $.ajax({
                      url:'http://desde9.esy.es/usuario.php',
                      type: 'GET',
@@ -297,7 +339,8 @@ var mainView = myApp.addView('.view-main', {
                      }
                  });
                  }else if (tipoUsuario=='padre' && cantidadNControl=='2'){
-                     console.log(cantidadNControl);
+                     console.log(nControl+nControl2+nombre+email+regId+password+tipoUsuario);
+                     
                      $.ajax({
                      url:'http://desde9.esy.es/usuario.php',
                      type: 'GET',
@@ -307,6 +350,9 @@ var mainView = myApp.addView('.view-main', {
                          if(data.estatus == true){
                              console.log(data.mensaje);
                              alert(data.mensaje);
+                             window.localStorage.setItem("nControl", data.nControl);
+                             window.localStorage.setItem("nControl2", data.nControl2);
+                             window.localStorage.setItem("tipo", data.tipo);
                              //alert(window.localStorage.getItem("nombreUsuario"))
                              window.location =("home.html");
                          }else{
@@ -318,7 +364,7 @@ var mainView = myApp.addView('.view-main', {
                          alert("ERROR TECNICO CON EL SERVICIO, INTENTE DE NUEVO MAS TARDE"+JSON.stringify(e));
                      }
                  });
-                 }
+                 }*/
         });
             });
         /*if(reg==1)
