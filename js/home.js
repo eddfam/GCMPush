@@ -1,4 +1,4 @@
-
+      $(document).ready(function () {
 // Init App
 var myApp = new Framework7({
     modalTitle: 'Framework7',
@@ -11,14 +11,51 @@ var myApp = new Framework7({
 var $$ = Dom7;
 
 // Add main view
-var mainView = myApp.addView('.view-main', {
+var mainView = myApp.addView('.view-main',{
     domCache: true //enable inline pages
 });
 // Pull to refresh content
-var ptrContent = $$('.pull-to-refresh-content.noticias');
+var ptrNotificaciones = $$('.pull-to-refresh-content.notificaciones');
+// Add 'refresh' listener on it
+          var nc1 = window.localStorage.getItem('nControl');
+          var nc2 = window.localStorage.getItem('nControl2');
+ptrNotificaciones.on('refresh', function (e){
+    setTimeout(function(){
+        $.ajax({
+            url:'http://desde9.esy.es/notificaciones.php',
+            type:'GET',
+            data:'type=padre2nc&nControl='+nc1+'&nControl2='+nc2,
+            dataType:'json',
+            error:function(jqXHR,text_status,strError){
+                alert('no internet connection');
+            },
+            timeout:60000,
+            success:function(data){
+                $("#resultNot").html("");
+                //clear();
+                //add(data);
+                for(var i in data){
+                    $("#resultNot").append(
+                       '<div class="card">'
+                            //+'<div class="card-header">'+data[i].titulo+'</div>'
+                            +'<div class="card-content">'
+                            +'<div class="card-content-inner">'+data[i].contenido+'</div>'
+                            +'</div>'
+                            +'<div class="card-footer">'+data[i].fecha+'</div>'
+                        +'</div>');
+                }
+            }
+        });
+        // When loading done, we need to "close" it
+        myApp.pullToRefreshDone();
+    }, 2000);
+});
+
+// Pull to refresh content
+var ptrNoticias = $$('.pull-to-refresh-content.noticias');
  
 // Add 'refresh' listener on it
-ptrContent.on('refresh', function (e) {
+ptrNoticias.on('refresh', function (e) {
     setTimeout(function () {
         $.ajax({
                 url:'http://desde9.esy.es/noticias.php',
@@ -52,10 +89,10 @@ ptrContent.on('refresh', function (e) {
             myApp.pullToRefreshDone();
         }, 2000);
 });
-var ptrContent = $$('.pull-to-refresh-content.publicaciones');
+var ptrPublicaciones = $$('.pull-to-refresh-content.publicaciones');
  
 // Add 'refresh' listener on it
-ptrContent.on('refresh', function (e) {
+ptrPublicaciones.on('refresh', function (e) {
     setTimeout(function () {
         $.ajax({
                 url:'http://desde9.esy.es/noticias.php',
@@ -91,7 +128,10 @@ ptrContent.on('refresh', function (e) {
             myApp.pullToRefreshDone();
         }, 2000);
 });
-
+      });
+          
+          
+          
 var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
 var dataBase = null;
             
@@ -122,13 +162,7 @@ function add(datos) {
     var active = dataBase.result;
     var data = active.transaction(["noticias"], "readwrite");
     var object = data.objectStore("noticias");
-
-    /*var request = object.put({
-        dni: document.querySelector("#dni").value,
-        name: document.querySelector("#name").value,
-        surname: document.querySelector("#surname").value
-    });*/
-
+    
     for(var i=0;i<datos.length;i++){
         var request=object.put({ //Añadimos un nuevo registro en la DB
             titulo:datos[i].titulo,
@@ -255,4 +289,4 @@ var app = {
         });
     }
 };
-app.initialize(); 
+app.initialize();
