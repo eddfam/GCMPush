@@ -17,14 +17,26 @@ var mainView = myApp.addView('.view-main',{
 // Pull to refresh content
 var ptrNotificaciones = $$('.pull-to-refresh-content.notificaciones');
 // Add 'refresh' listener on it
+          var tipoUsuario = window.localStorage.getItem('tipo');
           var nc1 = window.localStorage.getItem('nControl');
           var nc2 = window.localStorage.getItem('nControl2');
+          var data;
+          if(tipoUsuario=='alumno'){
+              data= 'type=alumno&nControl='+nc1;
+          }else if(tipoUsuario=='padre1nc'){
+              data= 'type=padre1nc&nControl='+nc1;
+          }else if(tipoUsuario=='padre2nc'){
+              data= 'type=padre2nc&nControl='+nc1'&nControl2='+nc2;
+          }
+          
+          
 ptrNotificaciones.on('refresh', function (e){
     setTimeout(function(){
         $.ajax({
+        
             url:'http://desde9.esy.es/notificaciones.php',
             type:'GET',
-            data:'type=padre2nc&nControl='+nc1+'&nControl2='+nc2,
+            data:data,
             dataType:'json',
             error:function(jqXHR,text_status,strError){
                 alert('no internet connection');
