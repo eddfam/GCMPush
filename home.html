@@ -10,10 +10,6 @@
     <title>Inicio</title>
     <link rel="stylesheet" href="css/framework7.material.css">
     <link rel="stylesheet" href="css/framework7.material.colors.css">
-<!--
-    <link rel="stylesheet" href="css/framework7.ios.css">
-    <link rel="stylesheet" href="css/framework7.ios.colors.css">
--->
     <link href="http://fonts.googleapis.com/css?family=Roboto:400,300,500,700" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="css/home.css">
     <link rel="icon" href="img/cordova_bot.png">
@@ -105,26 +101,15 @@
                 <div class="center">Notificaciones</div>
               </div>
             </div>
-            <div class="page-content">
-              <div class="content-block">
-                <p>This is a right side panel. You can close it by clicking outsite or on this link: <a href="#" class="close-panel">close me</a>. You can put here anything, even another isolated view, try it: </p>
-              </div>
-              <div class="list-block">
-                <ul>
-                  <li><a href="panel-right2.html" class="item-link">
-                      <div class="item-content">
-                        <div class="item-inner">
-                          <div class="item-title">Right panel page 2</div>
-                        </div>
-                      </div></a></li>
-                  <li><a href="panel-right3.html" class="item-link">
-                      <div class="item-content">
-                        <div class="item-inner">
-                          <div class="item-title">Right panel page 3</div>
-                        </div>
-                      </div></a></li>
-                </ul>
-              </div>
+            <div class="page-content pull-to-refresh-content notificaciones">
+                <div class="pull-to-refresh-layer">
+                    <div class="preloader"></div>
+                    <div class="pull-to-refresh-arrow"></div>
+                </div>
+                <div class="content-block-title">Notificaciones</div>
+                    <div id="resultNot">
+                        <center class="content-block-title">tire para actualizar</center>
+                    </div>
             </div>
           </div>
         </div>
@@ -220,7 +205,7 @@
   </div>
 </div> <!-- END Forms page -->            
 <!-- Noticias page -->
-            <div data-page="noticias" class="page cached">
+ <div data-page="noticias" class="page cached">
   <div class="navbar">
     <div class="navbar-inner">
       <div class="left"><a href="index.html" class="back link icon-only"><i class="icon icon-back"></i></a></div>
@@ -350,6 +335,10 @@
      
     $("#logout").on("click", function(e){
         e.preventDefault();
+        window.localStorage.removeItem("cantidadNControl");
+        window.localStorage.removeItem("tipo");
+        window.localStorage.removeItem("nControl");
+        window.localStorage.removeItem("nControl2");
         window.location.replace("index.html");
         window.localStorage.setItem("logueado", "no");
         

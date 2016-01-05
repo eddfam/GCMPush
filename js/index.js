@@ -38,7 +38,7 @@ if(logueado == "si")
 else
     {
         console.log(logueado);
-        window.location =("#");
+        window.location =("login.html");
     }
 $("#login-button").click(function(event){
             event.preventDefault();
@@ -61,7 +61,7 @@ $("#login-button").click(function(event){
                  $.ajax({
                      url:'http://desde9.esy.es/usuario.php',
                      type: 'GET',
-                     data: {op:'login', email:email, password:password},
+                     data: {type:'login', email:email, password:password},
                      dataType : 'jsonp',
                      success: function(data) {
                          if(data.estatus == true){

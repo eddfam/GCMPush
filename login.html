@@ -252,15 +252,15 @@ var mainView = myApp.addView('.view-main', {
                  window.localStorage.setItem("nombreUsuario", nombre);
                  window.localStorage.setItem("logueado", "si");
                  console.log(window.localStorage.getItem("regId"));
-                 console.log(window.localStorage.getItem("nombreUsuario"));
+                 console.log(window.localStorage.getItem( "nombreUsuario") );
              }
             var data;
             if(tipoUsuario =='alumno'){
-                data = {type:'regAlumno', nControl: nControl, nombre:nombre, email:email, regId:regId, password:password, tipoUsuario:tipoUsuario};
+                data = {type:'regAlumno', nControl: nControl, nombre:nombre, email:email, regId:regId, password:password, tipoUsuario:tipoUsuario,tipoDispositivo:'Android'};
             }else if(tipoUsuario=='padre' && cantidadNControl=='1'){
-                data= {type:'regPadre1nc', nControl: nControl, nombre:nombre, email:email, regId:regId, password:password, tipoUsuario:tipoUsuario};
+                data= {type:'regPadre1nc', nControl: nControl, nombre:nombre, email:email, regId:regId, password:password, tipoUsuario:tipoUsuario,tipoDispositivo:'Android'};
             }else if(tipoUsuario=='padre' && cantidadNControl=='2'){
-                data= {type:'regPadre2nc', nControl: nControl, nControl2:nControl2, nombre:nombre, email:email, regId:regId, password:password, tipoUsuario:tipoUsuario};
+                data= {type:'regPadre2nc', nControl: nControl, nControl2:nControl2, nombre:nombre, email:email, regId:regId, password:password, tipoUsuario:tipoUsuario,tipoDispositivo:'Android'};
             }
             $.ajax({
                      url:'http://desde9.esy.es/usuario.php',
@@ -296,96 +296,9 @@ var mainView = myApp.addView('.view-main', {
                      }
                  });
            
-            /*if(tipoUsuario =='alumno'){
-                 $.ajax({
-                     url:'http://desde9.esy.es/usuario.php',
-                     type: 'GET',
-                     data: {type:'regAlumno', nControl: nControl, nombre:nombre, email:email, regId:regId, password:password, tipoUsuario:tipoUsuario},
-                     dataType : 'jsonp',
-                     success: function(data) {
-                         if(data.estatus == true){
-                             console.log(data.mensaje);
-                             alert(data.mensaje);
-                             window.location =("home.html");
-                         }else{
-                             alert("Error : "+data.mensaje);
-                             console.log(data.mensaje);
-                         }
-                     },error: function(e) {
-                         console.log(JSON.stringify(e));
-                         alert("ERROR TECNICO CON EL SERVICIO, INTENTE DE NUEVO MAS TARDE"+JSON.stringify(e));
-                     }
-                 });
-                 }else if(tipoUsuario=='padre' && cantidadNControl=='1'){
-                     console.log(cantidadNControl);
-                     $.ajax({
-                     url:'http://desde9.esy.es/usuario.php',
-                     type: 'GET',
-                     data: {type:'regPadre1nc', nControl: nControl, nombre:nombre, email:email, regId:regId, password:password, tipoUsuario:tipoUsuario},
-                     dataType : 'jsonp',
-                     success: function(data) {
-                         if(data.estatus == true){
-                             console.log(data.mensaje);
-                             alert(data.mensaje);
-                             //alert(window.localStorage.getItem("nombreUsuario"))
-                             window.location =("home.html");
-                         }else{
-                             alert("Error : "+data.mensaje);
-                             console.log(data.mensaje);
-                         }
-                     },error: function(e) {
-                         console.log(JSON.stringify(e));
-                         alert("ERROR TECNICO CON EL SERVICIO, INTENTE DE NUEVO MAS TARDE"+JSON.stringify(e));
-                     }
-                 });
-                 }else if (tipoUsuario=='padre' && cantidadNControl=='2'){
-                     console.log(nControl+nControl2+nombre+email+regId+password+tipoUsuario);
-                     
-                     $.ajax({
-                     url:'http://desde9.esy.es/usuario.php',
-                     type: 'GET',
-                     data: {type:'regPadre2nc', nControl: nControl, nControl2:nControl2, nombre:nombre, email:email, regId:regId, password:password, tipoUsuario:tipoUsuario},
-                     dataType : 'jsonp',
-                     success: function(data) {
-                         if(data.estatus == true){
-                             console.log(data.mensaje);
-                             alert(data.mensaje);
-                             window.localStorage.setItem("nControl", data.nControl);
-                             window.localStorage.setItem("nControl2", data.nControl2);
-                             window.localStorage.setItem("tipo", data.tipo);
-                             //alert(window.localStorage.getItem("nombreUsuario"))
-                             window.location =("home.html");
-                         }else{
-                             alert("Error : "+data.mensaje);
-                             console.log(data.mensaje);
-                         }
-                     },error: function(e) {
-                         console.log(JSON.stringify(e));
-                         alert("ERROR TECNICO CON EL SERVICIO, INTENTE DE NUEVO MAS TARDE"+JSON.stringify(e));
-                     }
-                 });
-                 }*/
         });
             });
-        /*if(reg==1)
-    {
-    window.location =("home.html");
-    }
-        function registrar(){
-            var nombre = document.getElementById('name').value;
-            var email = document.getElementById('email').value;
-            var regId = document.getElementById('regId').value;
-            if (regId != "") {
-                if (nombre != '' && email != '') {
-                    //Enviamos los datos al servidor php
-                    document.formulario.submit();
-                    var reg=1;
-                }
-                else{alert('Ingrese un nombre y un correo para el registro en la base de datos.')}
-            }
-            else
-                {alert('Esperando regId del registro en GCM!');}
-        }*/
+
       </script>
   </body>
 </html>

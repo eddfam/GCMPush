@@ -216,15 +216,7 @@ function cargarIDB(){
                             +'<div class="card-content-inner">'+elements[key].descripcion+'</div>'
                             +'</div>'
                             +'<div class="card-footer">'+elements[key].fecha+'</div>'
-                        +'</div>'
-                /*'\n\
-            <tr>\n\
-                <td>' + elements[key].dni + '</td>\n\
-                <td>' + elements[key].name + '</td>\n\
-                <td>\n\
-                    <button type="button" onclick="load(' + elements[key].id + ')">Details</button>\n\
-                </td>\n\
-            </tr>'*/;
+                        +'</div>';
 
         }
 
