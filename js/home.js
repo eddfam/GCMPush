@@ -17,17 +17,18 @@ var mainView = myApp.addView('.view-main',{
 // Pull to refresh content
 var ptrNotificaciones = $$('.pull-to-refresh-content.notificaciones');
 // Add 'refresh' listener on it
-          var tipoUsuario = window.localStorage.getItem('tipo');
-          var nc1 = window.localStorage.getItem('nControl');
-          var nc2 = window.localStorage.getItem('nControl2');
-          var data;
-          if(tipoUsuario=='alumno'){
-              data = 'type=alumno&nControl='+nc1;
-          }else if(tipoUsuario=='padre1nc'){
-              data = 'type=padre1nc&nControl='+nc1;
-          }else if(tipoUsuario=='padre2nc'){
-              data = 'type=padre2nc&nControl='+nc1+'&nControl2='+nc2;
-          }
+    var tipoUsuario = window.localStorage.getItem('tipo');
+    var cantidadNControl = window.localStorage.getItem('cantidadNControl');
+    var nc1 = window.localStorage.getItem('nControl');
+    var nc2 = window.localStorage.getItem('nControl2');
+    var data;
+    if(tipoUsuario=='alumno'){
+        data = 'type=alumno&nControl='+nc1;
+    }else if(tipoUsuario=='padre'&& cantidadNControl==1){
+        data = 'type=padre1nc&nControl='+nc1;
+    }else if(tipoUsuario=='padre'&& cantidadNControl==2){
+        data = 'type=padre2nc&nControl='+nc1+'&nControl2='+nc2;
+    }
           
           
 ptrNotificaciones.on('refresh', function (e){
