@@ -1,4 +1,4 @@
-      $(document).ready(function () {
+$(document).ready(function(){
 // Init App
 var myApp = new Framework7({
     modalTitle: 'Framework7',
@@ -22,18 +22,17 @@ var ptrNotificaciones = $$('.pull-to-refresh-content.notificaciones');
           var nc2 = window.localStorage.getItem('nControl2');
           var data;
           if(tipoUsuario=='alumno'){
-              data= 'type=alumno&nControl='+nc1;
+              data = 'type=alumno&nControl='+nc1;
           }else if(tipoUsuario=='padre1nc'){
-              data= 'type=padre1nc&nControl='+nc1;
+              data = 'type=padre1nc&nControl='+nc1;
           }else if(tipoUsuario=='padre2nc'){
-              data= 'type=padre2nc&nControl='+nc1+'&nControl2='+nc2;
+              data = 'type=padre2nc&nControl='+nc1+'&nControl2='+nc2;
           }
           
           
 ptrNotificaciones.on('refresh', function (e){
     setTimeout(function(){
         $.ajax({
-        
             url:'http://desde9.esy.es/notificaciones.php',
             type:'GET',
             data:data,
@@ -49,7 +48,6 @@ ptrNotificaciones.on('refresh', function (e){
                 for(var i in data){
                     $("#resultNot").append(
                        '<div class="card">'
-                            //+'<div class="card-header">'+data[i].titulo+'</div>'
                             +'<div class="card-content">'
                             +'<div class="card-content-inner">'+data[i].contenido+'</div>'
                             +'</div>'
