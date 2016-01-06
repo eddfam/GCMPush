@@ -26,7 +26,7 @@ var ptrNotificaciones = $$('.pull-to-refresh-content.notificaciones');
           }else if(tipoUsuario=='padre1nc'){
               data= 'type=padre1nc&nControl='+nc1;
           }else if(tipoUsuario=='padre2nc'){
-              data= 'type=padre2nc&nControl='+nc1'&nControl2='+nc2;
+              data= 'type=padre2nc&nControl='+nc1+'&nControl2='+nc2;
           }
           
           
