@@ -106,7 +106,7 @@ var ptrPublicaciones = $$('.pull-to-refresh-content.publicaciones');
 ptrPublicaciones.on('refresh', function (e) {
     setTimeout(function () {
         $.ajax({
-                url:'http://desde9.esy.es/noticias.php',
+                url:'http://desde9.esy.es/publicaciones.php',
                 type:'POST',
                
                 dataType:'json',
@@ -120,21 +120,16 @@ ptrPublicaciones.on('refresh', function (e) {
 //                    add(data);
                     for(var i in data){
                     $("#publicaciones").append(
-
-                       '<div class="card">'
-                            +'<div class="card-header">'+data[i].titulo+'</div>'
-                            +'<div class="card-content">'
-                            +'<div class="card-content-inner">'+data[i].descripcion+'</div>'
-                            +'</div>'
-                            +'<div class="card-footer">'+data[i].fecha+'</div>'
-                        +'</div>'
-
-                        /*"<li>"+JSON.stringify(data[i].descripcion)+"</li>"*/);
+                        '<div class="card ks-card-header-pic">'
+                        +'<div style="background-image:url('+data[i].imagen+')" valign="bottom" class="card-header color-white no-border">'+data[i].titulo+'</div>'
+                        +'<div class="card-content">'
+                        +'<div class="card-content-inner">'
+                        +'<p class="color-gray">'+data[i].fecha+'</p>'
+                        +'<p>'+data[i].contenido+'</p></div></div>'
+                        +'<div class="card-footer"><a href="#" class="link">Like</a><a href="#" class="link">Read more</a </div></div>');
                 }
                 }
             });
-        
-        
             // When loading done, we need to "close" it
             myApp.pullToRefreshDone();
         }, 2000);
