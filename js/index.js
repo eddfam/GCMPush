@@ -34,13 +34,19 @@ if(logueado === "si")
         console.log(logueado);
          window.location.replace("home.html");
     }
-if (logueado=== "no"&& regId===null)
+else if (logueado=== null && regId===null)
     {
         console.log(logueado);
         console.log(regId);
         window.location.replace("login.html");
-    }   
-if (logueado=== "no" && regId!=null)
+    }
+else if (logueado=== "no" && regId!=null)
+    {
+        alert("logueado: "+logueado+ " regId: "+regId);
+        console.log(logueado);
+        window.location.replace("signup.html");
+    }
+else if (logueado=== null && regId!=null)
     {
         console.log(logueado);
         window.location.replace("signup.html");
