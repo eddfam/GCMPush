@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="css/home.css">
     <link rel="icon" href="img/cordova_bot.png">
   </head>
-  <body onload="startDB();">
+  <body>
     <div class="statusbar-overlay"></div>
     <div class="panel-overlay"></div>
     <div class="panel panel-left panel-cover">
@@ -125,7 +125,7 @@
                 <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
                 <div class="center">Inicio</div>
                 <div class="right">
-                <a href="#"  data-panel="right" class="open-panel link icon-only"><i class="icon icon-notification"></i></a>
+                <a href="#" class="open-right-panel"><i class="icon icon-notification"></i></a>
                 <a href="#" class="link icon-only"><i class="icon icon-more"></i></a></div>
               </div>
             </div>
@@ -335,14 +335,11 @@
      
     $("#logout").on("click", function(e){
         e.preventDefault();
-        window.localStorage.removeItem("cantidadNControl");
-        window.localStorage.removeItem("tipo");
-        window.localStorage.removeItem("nControl");
-        window.localStorage.removeItem("nControl2");
-        window.location.replace("index.html");
-        window.localStorage.setItem("logueado", "no");
         
+        window.localStorage.setItem("logueado", "no");
+        window.location.replace("index.html");
     });
+       
       </script>
       <style>
           #popoverUsuario{

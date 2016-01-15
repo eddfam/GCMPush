@@ -11,9 +11,10 @@
     <link rel="stylesheet" href="css/framework7.material.css">
     <link rel="stylesheet" href="css/framework7.material.colors.css">
     <link href="http://fonts.googleapis.com/css?family=Roboto:400,300,500,700" rel="stylesheet" type="text/css">
+    <link rel="icon" href="img/cordova_bot.png">
     <style>
         #views{
-            display: none;
+/*            display: none;*/
         }
       </style>
   </head>
@@ -55,10 +56,14 @@
                 </ul>
                 </div>
                 <div class="list-block">
-                <div class="content-block"><a id="login-button" class="button button-big">Iniciar sesión</a></div>
-                <div class="registro">
+             
+<div class="content-block"><a id="login-button" class="button button-big">Iniciar sesión</a></div>
+<!--
+              
+              <div class="registro">
                 <p> <a id="signup-btn" href="#">Si no está registrado pulse aquí</a></p>
               </div>
+-->
             </div>
           </div>
         </div>
@@ -85,17 +90,16 @@ position: absolute;
 		margin-top:-25px;
       }
       </style> 
-      <script type="text/javascript" src="cordova.js"></script>
-      <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
-      <script type="text/javascript" src="js/framework7.js"></script>
-      <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="js/framework7.js"></script>
+      <script type="text/javascript" src="js/signup.js"></script>
       <script>
           $("#signup-btn").click(function(event){
-              event.preventDefault();
-              //location.href = "login.html";
+            event.preventDefault();
+        location.href = "login.html";
           });
 
       </script>
   </body>
-  <img id="cargando" src="img/712.GIF">
 </html>

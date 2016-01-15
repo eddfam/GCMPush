@@ -27,24 +27,19 @@ var mainView = myApp.addView('.view-main', {
 });
 
 var logueado = localStorage.getItem("logueado");
-var regId = localStorage.getItem("regId");
 
-if(logueado === "si")
-    {
-        console.log(logueado);
-         window.location.replace("home.html");
-    }
-if (logueado=== "no"&& regId===null)
-    {
-        console.log(logueado);
-        console.log(regId);
-        window.location.replace("login.html");
-    }   
-if (logueado=== "no" && regId!=null)
-    {
-        console.log(logueado);
-        window.location.replace("signup.html");
-    }
+
+//if(logueado === "si")
+//    {
+//        console.log(logueado);
+//         window.location.replace("home.html");
+//    }
+//   
+//if (logueado=== "no")
+//    {
+//        console.log(logueado);
+//        window.location.replace("signup.html");
+//    }
 $("#login-button").click(function(event){
             event.preventDefault();
 	        var email = $("#email").val();
@@ -63,18 +58,25 @@ $("#login-button").click(function(event){
              }else{
                  console.log(window.localStorage.getItem("regId"));
                  console.log(window.localStorage.getItem("nombreUsuario"));
+                 var Data;
+                 var tipoUsuario = window.localStorage.getItem('tipo');
+                 if(tipoUsuario == 'alumno'){
+                     Data = 'type=loginAlumno&&email='+email+'&&password='+password;
+                 }else if(tipoUsuario == 'padre'){
+                     Data = 'type=loginUsuario&&email='+email+'&&password='+password;
+                 }
                  $.ajax({
                      url:'http://desde9.esy.es/usuario.php',
                      type: 'GET',
-                     data: {type:'login', email:email, password:password},
+                     data: Data,
                      dataType : 'jsonp',
-                     success: function(data) {
+                     success: function(data){
                          if(data.estatus == true){
                              window.localStorage.setItem("logueado", "si");
                              console.log(data.mensaje);
                              alert(data.mensaje);
                              
-                             window.location =("home.html");
+                             window.location.replace("home.html");
                          }else{
                              alert("Error : "+data.mensaje);
                              console.log(data.mensaje);
