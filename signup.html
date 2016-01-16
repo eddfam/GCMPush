@@ -7,16 +7,11 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="theme-color" content="#2196f3">
-    <title>Login</title>
+    <title>Signup</title>
     <link rel="stylesheet" href="css/framework7.material.css">
     <link rel="stylesheet" href="css/framework7.material.colors.css">
     <link href="http://fonts.googleapis.com/css?family=Roboto:400,300,500,700" rel="stylesheet" type="text/css">
     <link rel="icon" href="img/cordova_bot.png">
-    <style>
-        #views{
-/*            display: none;*/
-        }
-      </style>
   </head>
   <body>
      <!-- Views -->
@@ -58,48 +53,16 @@
                 <div class="list-block">
              
 <div class="content-block"><a id="login-button" class="button button-big">Iniciar sesión</a></div>
-<!--
-              
-              <div class="registro">
-                <p> <a id="signup-btn" href="#">Si no está registrado pulse aquí</a></p>
-              </div>
--->
             </div>
           </div>
         </div>
       </div>
     </div>
       </div>
-  </div> 
-  <style>
-      .registro{
-          text-align: center;
-      }
-      #cargando{
-position: absolute;
-		/*nos posicionamos en el centro del navegador*/
-		top:50%;
-		left:50%;
-		/*determinamos una anchura*/
-		width:50px;
-		/*indicamos que el margen izquierdo, es la mitad de la anchura*/
-		margin-left:-25px;
-		/*determinamos una altura*/
-		height:50px;
-		/*indicamos que el margen superior, es la mitad de la altura*/
-		margin-top:-25px;
-      }
-      </style> 
+  </div>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="js/framework7.js"></script>
       <script type="text/javascript" src="js/signup.js"></script>
-      <script>
-          $("#signup-btn").click(function(event){
-            event.preventDefault();
-        location.href = "login.html";
-          });
-
-      </script>
   </body>
 </html>
