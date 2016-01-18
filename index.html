@@ -1,48 +1,101 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-        <meta name="mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-status-bar-style" content="black">
-        <meta name="theme-color" content="#2196f3">
-        <title>Login</title>
-        <link rel="stylesheet" href="css/framework7.ios.css">
-        <link rel="stylesheet" href="css/framework7.ios.colors.min.css">
-        <link href="http://fonts.googleapis.com/css?family=Roboto:400,300,500,700" rel="stylesheet" type="text/css">
-        <style>
-            #views{
-                display: none;
-            }
-            .registro{
-                text-align: center;
-            }
-            #cargando{
-                position: absolute;
-                /*nos posicionamos en el centro del navegador*/
-                top:50%;
-                left:50%;
-                /*determinamos una anchura*/
-                width:50px;
-                /*indicamos que el margen izquierdo, es la mitad de la anchura*/
-                margin-left:-25px;
-                /*determinamos una altura*/
-                height:50px;
-                /*indicamos que el margen superior, es la mitad de la altura*/
-                margin-top:-25px;
-            }
-        </style>
-    </head>
-    <body>
-        <!-- Views -->
-        <div id="views" class="views">
-            <div class="view view-main"></div>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="theme-color" content="#2196f3">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/framework7.material.css">
+    <link rel="stylesheet" href="css/framework7.material.colors.css">
+    <link href="http://fonts.googleapis.com/css?family=Roboto:400,300,500,700" rel="stylesheet" type="text/css">
+    <style>
+        #views{
+            display: none;
+        }
+      </style>
+  </head>
+  <body>
+     <!-- Views -->
+  <div id="views" class="views">
+    <!-- Your main view -->
+    <div class="view view-main">
+      <!-- Pages -->
+      <div class="pages">
+        <div class="page" data-page="home">
+          <div class="page-content">
+            <div class="list-block">
+                <div class="content-block-title">Iniciar sesión</div>
+                <div class="list-block inputs-list">
+                <ul>
+                <li>
+                <div class="item-content">
+                    <div class="item-media"><i class="icon icon-form-email"></i></div>
+                    <div class="item-inner"> 
+                    <div class="item-title floating-label">E-mail</div>
+                    <div class="item-input">
+                        <input name="email" id="email" type="email" placeholder=""/>
+                    </div>
+                    </div>
+                </div>
+                </li>
+                <li>
+                <div class="item-content">
+                    <div class="item-media"><i class="icon icon-form-password"></i></div>
+                    <div class="item-inner"> 
+                    <div class="item-title floating-label">Password</div>
+                    <div class="item-input">
+                        <input name="password" id="password" type="password" placeholder=""/>
+                    </div>
+                    </div>
+                </div>
+                </li>
+                </ul>
+                </div>
+                <div class="list-block">
+                <div class="content-block"><a id="login-button" class="button button-big">Iniciar sesión</a></div>
+                <div class="registro">
+                <p> <a id="signup-btn" href="#">Si no está registrado pulse aquí</a></p>
+              </div>
+            </div>
+          </div>
         </div>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
-        <script type="text/javascript" src="js/framework7.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-    </body>
-    <img id="cargando" src="img/712.GIF">
+      </div>
+    </div>
+      </div>
+  </div> 
+  <style>
+      .registro{
+          text-align: center;
+      }
+      #cargando{
+position: absolute;
+		/*nos posicionamos en el centro del navegador*/
+		top:50%;
+		left:50%;
+		/*determinamos una anchura*/
+		width:50px;
+		/*indicamos que el margen izquierdo, es la mitad de la anchura*/
+		margin-left:-25px;
+		/*determinamos una altura*/
+		height:50px;
+		/*indicamos que el margen superior, es la mitad de la altura*/
+		margin-top:-25px;
+      }
+      </style> 
+      <script type="text/javascript" src="cordova.js"></script>
+      <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="js/framework7.js"></script>
+      <script type="text/javascript" src="js/index.js"></script>
+      <script>
+          $("#signup-btn").click(function(event){
+              event.preventDefault();
+              //location.href = "login.html";
+          });
+
+      </script>
+  </body>
+  <img id="cargando" src="img/712.GIF">
 </html>
