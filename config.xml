@@ -60,6 +60,8 @@ Prueba 1 de GCM Push </description>
     
     <allow-navigation href="http://*/*" /> 
     <allow-intent href="https://*/*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="tel:*" />
     <access origin="tel:*" launch-external="yes" />
     <access origin="*" browserOnly="false"/>
     <access origin="*" subdomains="true" />
