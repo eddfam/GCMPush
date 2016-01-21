@@ -159,18 +159,4 @@ $(document).ready(function(){
         window.localStorage.setItem("logueado", "no");
         window.location.replace("index.html");
     });
-    var tapped=false;
-        $("#phoneNumber").on("touchstart",function(e){
-        if(!tapped){
-            tapped=setTimeout(function(){
-                window.open('tel:899 924 1918', '_system')
-                //document.location.href = 'tel:899 924 1918'
-                tapped=null
-            },300); //wait 300ms
-        }else{
-            clearTimeout(tapped);
-            tapped=null
-        }
-        e.preventDefault()
-    });
 });
