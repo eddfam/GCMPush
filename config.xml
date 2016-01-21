@@ -58,8 +58,11 @@ Prueba 1 de GCM Push </description>
     <gap:plugin name="cordova-plugin-whitelist" source="npm"/>
     <gap:plugin name="org.apache.cordova.inappbrowser" />
     
+    <uses-permission android:autoLink="phone" />
+    
     <allow-navigation href="http://*/*" /> 
     <allow-intent href="https://*/*" />
+    <access origin="tel:*" launch-external="yes" />
     <access origin="*" browserOnly="false"/>
     <access origin="*" subdomains="true" />
     <access origin="*.google.com" />
