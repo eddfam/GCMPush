@@ -56,18 +56,14 @@ Prueba 1 de GCM Push </description>
     <!--Plugin de notificaciones -->
     <gap:plugin name="phonegap-plugin-push" source="npm" version="1.2.3" />
     <gap:plugin name="cordova-plugin-whitelist" source="npm"/>
-<!--    <gap:plugin name="org.apache.cordova.inappbrowser" />-->
-    <plugin name="com.teamnemitoff.phonedialer" spec="0.3.0" source="pgb" />
+    <gap:plugin name="org.apache.cordova.inappbrowser" />
     
     <allow-navigation href="http://*/*" /> 
     <allow-intent href="https://*/*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="tel:*" />
-    <access origin="*" browserOnly="false"/>
+    <access origin="*" browserOnly="true"/>
     <access origin="*" subdomains="true" />
-    <access origin="*.google.com" />
-    <access origin="*.googleapis.com" /> 
-    <access origin="*.gstatic.com" />
     <access origin="http://phonegap.com" subdomains="true" />
     
 </widget>
