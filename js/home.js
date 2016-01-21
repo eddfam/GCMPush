@@ -34,7 +34,7 @@ var app = {
 app.initialize();
 $(document).ready(function(){
     var map;
-    $(document).ready(function(){
+   
       map = new GMaps({
         div: '#map',
         lat: 26.072427289759077, 
@@ -58,7 +58,7 @@ $(document).ready(function(){
           content: '<strong>Preparatoria Colón</strong><br>Jalapa No. 335, Rodríguez,<br>88630 Reynosa, Tamps.'
         }
       });
-    });
+  
     // Init App
     var myApp = new Framework7({
         modalTitle: 'Framework7',
