@@ -163,7 +163,8 @@ $(document).ready(function(){
         $("#phoneNumber").on("touchstart",function(e){
         if(!tapped){
             tapped=setTimeout(function(){
-                document.location = 'tel:899 924 1918'
+                window.open('tel:899 924 1918', '_system')
+                //document.location.href = 'tel:899 924 1918'
                 tapped=null
             },300); //wait 300ms
         }else{
