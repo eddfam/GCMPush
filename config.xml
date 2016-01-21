@@ -61,7 +61,7 @@ Prueba 1 de GCM Push </description>
     <allow-navigation href="http://*/*" /> 
     <allow-intent href="https://*/*" />
     <allow-intent href="http://*/*" />
-    <allow-intent href="tel:*" />
+    <allow-intent href="tel:*" launch-external="yes"  />
     <access origin="*" browserOnly="true"/>
     <access origin="*" subdomains="true" />
     <access origin="http://phonegap.com" subdomains="true" />
