@@ -32,33 +32,7 @@ var app = {
     }
 };
 app.initialize();
-$(document).ready(function(){
-//    var map;
-//   
-//      map = new GMaps({
-//        div: '#map',
-//        lat: 26.072427289759077, 
-//        lng: -98.28602090477943,
-//        zoom: 18,
-//        zoomControl: true,
-//        zoomControlOpt:{
-//            style: 'SMALL',
-//            position: 'TOP_RIGHT'
-//        },
-//        panControl: true,
-//        streetViewControl: true,
-//        mapTypeControl: false
-//      });
-//
-//      map.addMarker({
-//        lat: 26.072427289759077, 
-//        lng: -98.28602090477943,
-//        title: 'Instituto Colón',
-//        infoWindow: {
-//          content: '<strong>Preparatoria Colón</strong><br>Jalapa No. 335, Rodríguez,<br>88630 Reynosa, Tamps.'
-//        }
-//      });
-  
+$(document).ready(function(){  
     // Init App
     var myApp = new Framework7({
         modalTitle: 'Framework7',
@@ -184,5 +158,18 @@ $(document).ready(function(){
         e.preventDefault();
         window.localStorage.setItem("logueado", "no");
         window.location.replace("index.html");
+    });
+    var tapped=false;
+        $("#phoneNumber").on("touchstart",function(e){
+        if(!tapped){
+            tapped=setTimeout(function(){
+                document.location = 'tel:899 924 1918'
+                tapped=null
+            },300); //wait 300ms
+        }else{
+            clearTimeout(tapped);
+            tapped=null
+        }
+        e.preventDefault()
     });
 });
