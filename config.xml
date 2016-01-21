@@ -60,7 +60,7 @@ Prueba 1 de GCM Push </description>
     
     <allow-navigation href="http://*/*" /> 
     <allow-intent href="https://*/*" />
-    <access origin="*" browserOnly="true"/>
+    <access origin="*" browserOnly="false"/>
     <access origin="*" subdomains="true" />
     <access origin="*.google.com" />
     <access origin="*.googleapis.com" /> 
