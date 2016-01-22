@@ -32,7 +32,7 @@ var app = {
     }
 };
 app.initialize();
-$(document).ready(function(){  
+$(document).ready(function(){
     // Init App
     var myApp = new Framework7({
         modalTitle: 'Framework7',
@@ -74,18 +74,8 @@ $(document).ready(function(){
                 },
                 timeout:60000,
                 success:function(data){
-                    $("#resultNot").html("");
-                    //clear();
-                    //add(data);
-                    for(var i in data){
-                        $("#resultNot").append(
-                            '<div class="card">'
-                            +'<div class="card-content">'
-                            +'<div class="card-content-inner">'+data[i].contenido+'</div>'
-                            +'</div>'
-                            +'<div class="card-footer">'+data[i].fecha+'</div>'
-                            +'</div>');
-                    }
+                    borrarNotificaciones();
+                    addNotificacion(data);
                 }
             });
             myApp.pullToRefreshDone();// When loading done, we need to "close" it
@@ -106,18 +96,8 @@ $(document).ready(function(){
                 timeout:60000,
                 success:function(data){
                     $("#result").html("");
-                    //clear();
-                    //add(data);
-                    for(var i in data){
-                        $("#result").append(
-                            '<div class="card">'
-                            +'<div class="card-header">'+data[i].titulo+'</div>'
-                            +'<div class="card-content">'
-                            +'<div class="card-content-inner">'+data[i].descripcion+'</div>'
-                            +'</div>'
-                            +'<div class="card-footer">'+data[i].fecha+'</div>'
-                            +'</div>');
-                    }
+                    borrarNoticias();
+                    addNoticia(data);
                 }
             });
             myApp.pullToRefreshDone();
@@ -135,19 +115,9 @@ $(document).ready(function(){
                 }, 
                 timeout:60000,
                 success:function(data){
-                    $("#publicaciones").html("");
-//                    clear();
-//                    add(data);
-                    for(var i in data){
-                        $("#publicaciones").append(
-                            '<div class="card ks-card-header-pic">'
-                            +'<div style="background-image:url('+data[i].imagen+')" valign="bottom" class="card-header color-white no-border">'+data[i].titulo+'</div>'
-                            +'<div class="card-content">'
-                            +'<div class="card-content-inner">'
-                            +'<p class="color-gray">'+data[i].fecha+'</p>'
-                            +'<p>'+data[i].contenido+'</p></div></div>'
-                            +'<div class="card-footer"><a href="#" class="link">Like</a><a href="#" class="link">Read more</a </div></div>');
-                    }
+                    $("#resultPublicaciones").html("");
+                    borrarPublicaciones();
+                    addPublicacion(data);
                 }
             });
             myApp.pullToRefreshDone();
@@ -160,3 +130,180 @@ $(document).ready(function(){
         window.location.replace("index.html");
     });
 });
+if (window.openDatabase){
+    var mydb = openDatabase("gsm_android_push", "0.1", "DB of gsmApp", 5 * 1024 * 1024);
+    mydb.transaction(function (t){
+        t.executeSql("CREATE TABLE IF NOT EXISTS noticias (serverId INTEGER, titulo VARCHAR(90), descripcion VARCHAR(255), fecha VARCHAR(20))");
+        t.executeSql("CREATE TABLE IF NOT EXISTS publicaciones (serverId INTEGER, titulo VARCHAR(100), contenido mediumtext, fecha datetime, imagen mediumtext)");
+        t.executeSql("CREATE TABLE IF NOT EXISTS notificaciones (serverId INTEGER, contenido VARCHAR(256), fecha datetime)");
+    });
+}else{
+    alert("Su dispositivo no soporta Bases de Datos local");
+}
+function addNoticia(datos){
+    if (mydb){
+        mydb.transaction(function (t){
+            
+            for(var i=0;i<datos.length;i++){
+            t.executeSql("INSERT INTO noticias (serverId, titulo, descripcion, fecha) VALUES (?, ?, ?, ?)", [datos[i].id, datos[i].titulo, datos[i].descripcion, datos[i].fecha]);
+            }
+            mostrarNoticias();
+        });
+    } else {
+        alert("Su dispositivo no soporta Bases de Datos local");
+    }
+}
+function addPublicacion(datos){
+    if (mydb){
+        mydb.transaction(function (t){
+            
+            for(var i=0;i<datos.length;i++){
+            t.executeSql("INSERT INTO publicaciones (serverId, titulo, contenido, fecha, imagen) VALUES (?, ?, ?, ?, ?)", [datos[i].id, datos[i].titulo, datos[i].contenido, datos[i].fecha, datos[i].imagen]);
+            }
+            mostrarPublicaciones();
+        });
+    } else {
+        alert("Su dispositivo no soporta Bases de Datos local");
+    }
+}
+function addNotificacion(datos){
+    if(mydb){
+        mydb.transaction(function(t){
+            for(var i=0;i<datos.length;i++){
+                t.executeSql("INSERT INTO notificaciones(contenido, fecha) VALUES (?, ?)", [datos[i].contenido, datos[i].fecha]);
+            }
+            mostrarNotificaciones();
+        });
+    } else {
+        alert("Su dispositivo no soporta Bases de Datos local");
+    }
+}
+function mostrarNoticias(){
+    if (mydb){
+        mydb.transaction(function(tx){
+            tx.executeSql("SELECT count(*) FROM noticias",[], function(tx,result){
+                var count = result.rows.item(0)["count(*)"];
+                console.log("dd " +count);
+                if(count == 0){
+                    alert("actualize "+count);
+                }else if(count!= 0){
+                    alert("tengo registros guardados "+count);
+                    mydb.transaction(function(t){ t.executeSql("SELECT * FROM noticias ", [], llenarNoticias);});
+                }
+            });
+        });
+    } else {
+        alert("Su dispositivo no soporta Bases de Datos local");
+    }
+}
+function mostrarPublicaciones(){
+    if (mydb){
+        mydb.transaction(function(tx){
+            tx.executeSql("SELECT count(*) FROM publicaciones",[], function(tx,result){
+                var count = result.rows.item(0)["count(*)"];
+                console.log("dd " +count);
+                if(count == 0){
+                    alert("actualize "+count);
+                }else if(count!= 0){
+                    alert(count+ " publicaciones almacenadas");
+                    mydb.transaction(function(t){ t.executeSql("SELECT * FROM publicaciones ", [], llenarPublicaciones);});
+                }
+            });
+        });
+    } else {
+        alert("Su dispositivo no soporta Bases de Datos local");
+    }
+}
+function mostrarNotificaciones(){
+    if (mydb){
+        mydb.transaction(function(tx){
+            tx.executeSql("SELECT count(*) FROM notificaciones",[], function(tx,result){
+                var count = result.rows.item(0)["count(*)"];
+                console.log("dd " +count);
+                if(count == 0){
+                    alert(count + " notificaciones almecenadas, actualize");
+                }else if(count!= 0){
+                    alert(count + " notificaciones almacenadas");
+                    mydb.transaction(function(t){ t.executeSql("SELECT * FROM notificaciones ", [], llenarNotificaciones);});
+                }
+            });
+        });
+    } else {
+        alert("Su dispositivo no soporta Bases de Datos local");
+    }
+}
+function llenarNoticias(transaction, results){
+    var listholder = document.getElementById("resultNoticias");
+    listholder.innerHTML = "";
+    var i;
+    for(i=0;i<results.rows.length; i++){
+        var row = results.rows.item(i);
+        listholder.innerHTML +=
+            '<div class="card">'
+            +'<div class="card-header">'+row.titulo+'</div>'
+            +'<div class="card-content">'
+            +'<div class="card-content-inner">'+row.descripcion+'</div>'
+            +'</div>'
+            +'<div class="card-footer">'+row.fecha+'</div>'
+            +'</div>';
+    }
+    listholder.style.marginBottom='60px';
+}
+function llenarPublicaciones(transaction, results){
+    var listholder = document.getElementById("resultPublicaciones");
+    listholder.innerHTML = "";
+    var i;
+    for(i=0;i<results.rows.length; i++){
+        var row = results.rows.item(i);
+        listholder.innerHTML +=
+            '<div class="card ks-card-header-pic">'
+            +'<div style="background-image:url('+row.imagen+')" valign="bottom" class="card-header color-white no-border">'+row.titulo+'</div>'
+            +'<div class="card-content">'
+            +'<div class="card-content-inner">'
+            +'<p class="color-gray">'+row.fecha+'</p>'
+            +'<p>'+row.contenido+'</p></div></div>'
+            +'<div class="card-footer"><a href="#" class="link">Like</a><a href="#" class="link">Read more</a </div></div>';
+    }
+}
+function llenarNotificaciones(transaction, results){
+    var listholder = document.getElementById("resultNotificaciones");
+    listholder.innerHTML = "";
+    var i;
+    for(i=0;i<results.rows.length; i++){
+        var row = results.rows.item(i);
+        listholder.innerHTML +=
+            '<div class="card">'
+            +'<div class="card-content">'
+            +'<div class="card-content-inner">'+row.contenido+'</div>'
+            +'</div>'
+            +'<div class="card-footer">'+row.fecha+'</div>'
+            +'</div>';
+    }
+}
+function borrarNoticias(){
+    if (mydb){
+        mydb.transaction(function (t){
+            t.executeSql("DELETE FROM noticias", [], llenarNoticias);
+        });
+    }else{
+        alert("Su dispositivo no soporta Bases de Datos local");
+    }
+}
+function borrarPublicaciones(){
+    if (mydb){
+        mydb.transaction(function (t){
+            t.executeSql("DELETE FROM publicaciones", [], llenarPublicaciones);
+        });
+    }else{
+        alert("Su dispositivo no soporta Bases de Datos local");
+    }
+}
+function borrarNotificaciones(){
+    if (mydb){
+        mydb.transaction(function (t){
+            t.executeSql("DELETE FROM notificaciones", [], llenarNotificaciones);
+        });
+    }else{
+        alert("Su dispositivo no soporta Bases de Datos local");
+    }
+}

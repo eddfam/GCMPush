@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="css/home.css">
         <link rel="icon" href="img/cordova_bot.png">
     </head>
-    <body>
+    <body onload="mostrarPublicaciones()">
         <div class="statusbar-overlay"></div>
         <div class="panel-overlay"></div>
         <div class="panel panel-left panel-cover">
@@ -37,7 +37,7 @@
                             <div class="list-block">
                                 <ul>
                                     <li>
-                                        <a href="#noticias" class="item-link close-panel">
+                                        <a onclick="mostrarNoticias()" href="#noticias" class="item-link close-panel">
                                             <div class="item-content">
                                                 <div class="item-media"><i class="icon icon-cordova-96"></i></div>
                                                 <div class="item-inner">
@@ -111,7 +111,7 @@
                                 <div class="pull-to-refresh-arrow"></div>
                             </div>
                             <div class="content-block-title">Notificaciones</div>
-                            <div id="resultNot">
+                            <div id="resultNotificaciones">
                                 <center class="content-block-title">tire para actualizar</center>
                             </div>
                         </div>
@@ -129,7 +129,7 @@
                                 <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
                                 <div class="center">Inicio</div>
                                 <div class="right">
-                                    <a href="#" class="open-right-panel"><i class="icon icon-notification"></i></a>
+                                    <a onclick="mostrarNotificaciones()" href="#" class="open-right-panel"><i class="icon icon-notification"></i></a>
                                     <a href="#" data-popover=".popover-links" class="link icon-only open-popover"><i class="icon icon-more"></i></a></div>
                             </div>
                         </div>
@@ -139,7 +139,7 @@
                                 <div class="pull-to-refresh-arrow"></div>
                             </div>
                             <div class="content-block-title">Publicaciones</div>
-                            <div id="publicaciones"> <center class="content-block-title">tira para refrescar</center></div>
+                            <div id="resultPublicaciones"> <center class="content-block-title">tira para refrescar</center></div>
                         </div>
                     </div>
                     <!-- Noticias page -->
@@ -157,7 +157,7 @@
                                 <div class="pull-to-refresh-arrow"></div>
                             </div>
                             <div class="content-block-title">Noticias</div>
-                            <div id="result"> <center class="content-block-title">tira para refrescar</center></div>
+                            <div id="resultNoticias"> <center class="content-block-title">tira para refrescar</center></div>
                         </div>
                     </div> <!-- END Noticias page -->
                     <!-- Eventos page -->
@@ -175,7 +175,7 @@
                                 <div class="pull-to-refresh-arrow"></div>
                             </div>
                             <div class="content-block-title">Eventos</div>
-                            <div id="result"> <center class="content-block-title">tira para refrescar</center></div>
+                            <div id="resultEventos"> <center class="content-block-title">tira para refrescar</center></div>
                         </div>
                     </div> <!-- END Eventos page -->
                     <!-- Mision page -->
@@ -204,13 +204,10 @@
                                 <div class="right"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
                             </div>
                         </div>
-                        <div class="page-content pull-to-refresh-content vision">
-                            <div class="pull-to-refresh-layer">
-                                <div class="preloader"></div>
-                                <div class="pull-to-refresh-arrow"></div>
-                            </div>
+                        <div class="page-content">
+                            
                             <div class="content-block-title">Visión</div>
-                            <div id="result"> <center class="content-block-title">tira para refrescar</center></div>
+                            <div id="result"> <center class="content-block-title">Visión</center></div>
                         </div>
                     </div> <!-- END Ubicacion page -->
                     <div data-page="mapa" class="page cached">
@@ -303,19 +300,6 @@
         <script type="text/javascript" src="js/home.js"></script>
         
 	<script>
-        var app2 = {
-        initialize: function() {
-        this.bindEvents();
-    },         
-    bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
-    },         
-    onDeviceReady: function() {
-        app2.receivedEvent('deviceready');
-    },
-    openNativeAppWindow: function(data) {
-        window.open(data, '_system');
-    }
         </script>
         <style>
             #popoverUsuario{
