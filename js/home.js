@@ -185,7 +185,7 @@ function mostrarNoticias(){
                 var count = result.rows.item(0)["count(*)"];
                 console.log("dd " +count);
                 if(count == 0){
-                    alert("actualize "+count);
+                    alert(count + " noticias almecenadas, actualize");
                 }else if(count!= 0){
                     alert("tengo registros guardados "+count);
                     mydb.transaction(function(t){ t.executeSql("SELECT * FROM noticias ", [], llenarNoticias);});
@@ -203,7 +203,7 @@ function mostrarPublicaciones(){
                 var count = result.rows.item(0)["count(*)"];
                 console.log("dd " +count);
                 if(count == 0){
-                    alert("actualize "+count);
+                    alert(count + " publicaciones almecenadas, actualize");
                 }else if(count!= 0){
                     alert(count+ " publicaciones almacenadas");
                     mydb.transaction(function(t){ t.executeSql("SELECT * FROM publicaciones ", [], llenarPublicaciones);});
