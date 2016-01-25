@@ -123,6 +123,26 @@ $(document).ready(function(){
             myApp.pullToRefreshDone();
         }, 6000);
     });
+    var ptrEventos = $$('.pull-to-refresh-content.eventos');
+    ptrEventos.on('refresh', function(e){
+        setTimeout(function(){
+            $.ajax({
+                url:'http://desde9.esy.es/eventos.php',
+                type:'POST',               
+                dataType:'json',
+                error:function(jqXHR,text_status,strError){
+                    alert('no internet connection');
+                }, 
+                timeout:60000,
+                success:function(data){
+                    $("#resultEventos").html("");
+                    borrarEventos();
+                    addEventos(data);
+                }
+            });
+            myApp.pullToRefreshDone();
+        }, 6000);
+    });
     document.getElementById("nombreUsuario").innerHTML = localStorage.getItem("nombreUsuario");
     $("#logout").on("click", function(e){
         e.preventDefault();
@@ -136,6 +156,7 @@ if (window.openDatabase){
         t.executeSql("CREATE TABLE IF NOT EXISTS noticias (serverId INTEGER, titulo VARCHAR(90), descripcion VARCHAR(255), fecha VARCHAR(20))");
         t.executeSql("CREATE TABLE IF NOT EXISTS publicaciones (serverId INTEGER, titulo VARCHAR(100), contenido mediumtext, fecha datetime, imagen mediumtext)");
         t.executeSql("CREATE TABLE IF NOT EXISTS notificaciones (serverId INTEGER, contenido VARCHAR(256), fecha datetime)");
+        t.executeSql("CREATE TABLE IF NOT EXISTS eventos (serverId INTEGER, titulo VARCHAR(100), ubicacion VARCHAR(100), descripcion mediumtext, fecha date, hora time)");
     });
 }else{
     alert("Su dispositivo no soporta Bases de Datos local");
@@ -156,9 +177,8 @@ function addNoticia(datos){
 function addPublicacion(datos){
     if (mydb){
         mydb.transaction(function (t){
-            
             for(var i=0;i<datos.length;i++){
-            t.executeSql("INSERT INTO publicaciones (serverId, titulo, contenido, fecha, imagen) VALUES (?, ?, ?, ?, ?)", [datos[i].id, datos[i].titulo, datos[i].contenido, datos[i].fecha, datos[i].imagen]);
+                t.executeSql("INSERT INTO publicaciones (serverId, titulo, contenido, fecha, imagen) VALUES (?, ?, ?, ?, ?)", [datos[i].id, datos[i].titulo, datos[i].contenido, datos[i].fecha, datos[i].imagen]);
             }
             mostrarPublicaciones();
         });
@@ -173,6 +193,18 @@ function addNotificacion(datos){
                 t.executeSql("INSERT INTO notificaciones(contenido, fecha) VALUES (?, ?)", [datos[i].contenido, datos[i].fecha]);
             }
             mostrarNotificaciones();
+        });
+    } else {
+        alert("Su dispositivo no soporta Bases de Datos local");
+    }
+}
+function addEventos(datos){
+    if(mydb){
+        mydb.transaction(function(t){
+            for(var i=0;i<datos.length;i++){
+                t.executeSql("INSERT INTO eventos(serverId, titulo, ubicacion, descripcion, fecha, hora) VALUES (?, ?, ?, ?, ?, ?)", [datos[i].id, datos[i].titulo, datos[i].ubicacion, datos[i].descripcion, datos[i].fecha, datos[i].hora]);
+            }
+            mostrarEventos();
         });
     } else {
         alert("Su dispositivo no soporta Bases de Datos local");
@@ -232,6 +264,24 @@ function mostrarNotificaciones(){
         alert("Su dispositivo no soporta Bases de Datos local");
     }
 }
+function mostrarEventos(){
+    if (mydb){
+        mydb.transaction(function(tx){
+            tx.executeSql("SELECT count(*) FROM eventos",[], function(tx,result){
+                var count = result.rows.item(0)["count(*)"];
+                console.log("dd " +count);
+                if(count == 0){
+                    alert(count + " eventos almecenados, actualize");
+                }else if(count!= 0){
+                    alert(count + " eventos almacenados");
+                    mydb.transaction(function(t){t.executeSql("SELECT * FROM eventos ", [], llenarEventos);});
+                }
+            });
+        });
+    } else {
+        alert("Su dispositivo no soporta Bases de Datos local");
+    }
+}
 function llenarNoticias(transaction, results){
     var listholder = document.getElementById("resultNoticias");
     listholder.innerHTML = "";
@@ -280,6 +330,26 @@ function llenarNotificaciones(transaction, results){
             +'</div>';
     }
 }
+function llenarEventos(transaction, results){
+    var listholder = document.getElementById("resultEventos");
+    listholder.innerHTML = "";
+    var i;
+    for(i=0;i<results.rows.length; i++){
+        var row = results.rows.item(i);
+        listholder.innerHTML +=
+            
+            '<li><a href="#" class="item-link item-content">'
+            +'<div class="item-media"><img class="date" src="http://lorempixel.com/160/160/people/1" width="80"/></div>'
+            +'<div class="item-inner">'
+            +'<div class="item-title-row">'
+            +'<div class="item-title">'+row.titulo+'</div>'
+            +'<div class="item-after">'+row.hora+'</div>'
+            +'</div>'
+            +'<div class="item-subtitle">'+row.ubicacion+'</div>'
+            +'<div class="item-text">'+row.descripcion+'</div>'
+            +'</div></a></li>';
+    }
+}
 function borrarNoticias(){
     if (mydb){
         mydb.transaction(function (t){
@@ -302,6 +372,15 @@ function borrarNotificaciones(){
     if (mydb){
         mydb.transaction(function (t){
             t.executeSql("DELETE FROM notificaciones", [], llenarNotificaciones);
+        });
+    }else{
+        alert("Su dispositivo no soporta Bases de Datos local");
+    }
+}
+function borrarEventos(){
+    if (mydb){
+        mydb.transaction(function (t){
+            t.executeSql("DELETE FROM eventos", [], llenarEventos);
         });
     }else{
         alert("Su dispositivo no soporta Bases de Datos local");

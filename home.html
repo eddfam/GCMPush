@@ -27,6 +27,7 @@
                             </div>
                         </div>
                         <div class="page-content">
+                           <div id="logo"><center><img src="img/logo.png" alt=""></center></div>
                             <div class="content-block-title">Usuario</div>
                             <div class="content-block">
                                 <div class="chip">
@@ -47,7 +48,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#eventos" class="item-link close-panel">
+                                        <a onclick="mostrarEventos()" href="#eventos" class="item-link close-panel">
                                             <div class="item-content">
                                                 <div class="item-media"><i class="icon icon-cordova-96"></i></div>
                                                 <div class="item-inner">
@@ -175,7 +176,12 @@
                                 <div class="pull-to-refresh-arrow"></div>
                             </div>
                             <div class="content-block-title">Eventos</div>
-                            <div id="resultEventos"> <center class="content-block-title">tira para refrescar</center></div>
+                            <div class="list-block media-list">
+                               <ul>
+                                 <div id="resultEventos"> <center class="content-block-title">tira para refrescar</center></div>  
+                               </ul>
+                            </div>
+                            
                         </div>
                     </div> <!-- END Eventos page -->
                     <!-- Mision page -->
@@ -319,6 +325,9 @@
                 -moz-box-shadow: 0px 5px 20px #ccc;
                 -webkit-box-shadow: 0px 5px 20px #ccc;
                 box-shadow: 0px 5px 20px #ccc;
+            }
+            #logo{
+                margin-top: 10px;
             }
         </style>
     </body>
