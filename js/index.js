@@ -31,3 +31,43 @@ if(logueado === "si"){
     console.log(logueado);
     window.location.replace("signup.html");
 }
+
+var app = {
+    // Application Constructor
+    initialize: function(){
+        this.bindEvents();
+    },
+    bindEvents: function(){
+        document.addEventListener('deviceready', this.onDeviceReady, false);
+    },
+    onDeviceReady: function(){
+        var push = PushNotification.init({
+            "android": {"senderID": "400009158834"},
+            "ios": {"alert":"true", "badge":"true", "sound":"true"},
+            "windows": {} 
+        });
+        push.on('registration', function(data) {
+            console.log("registration event");
+            document.getElementById("regId").innerHTML = data.registrationId;
+            console.log(JSON.stringify(data));
+        });
+        
+        push.on('notification', function(data){
+            (new Media('tone.wav')).play();
+            alert("desde");
+            console.log("notification event");
+            console.log(JSON.stringify(data));
+            if(data.title=='Notificacion'){
+                myApp.openPanel('right');
+            }
+            push.finish(function(){
+                console.log('finish successfully called');
+            });
+        });
+        push.on('error', function(e){
+            console.log("push error");
+            document.getElementById("regId").innerHTML = 'Error';
+        });
+    }
+};
+app.initialize();
