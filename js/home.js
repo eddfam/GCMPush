@@ -141,7 +141,7 @@ $(document).ready(function(){
                 }
             });
             myApp.pullToRefreshDone();
-        }, 6000);
+        }, 2000);
     });
     document.getElementById("nombreUsuario").innerHTML = localStorage.getItem("nombreUsuario");
     $("#logout").on("click", function(e){
