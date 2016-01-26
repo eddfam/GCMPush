@@ -217,9 +217,9 @@ function mostrarNoticias(){
                 var count = result.rows.item(0)["count(*)"];
                 console.log("dd " +count);
                 if(count == 0){
-                    alert(count + " noticias almecenadas, actualize");
+                    //alert(count + " noticias almecenadas, actualize");
                 }else if(count!= 0){
-                    alert("tengo registros guardados "+count);
+                    //alert("tengo registros guardados "+count);
                     mydb.transaction(function(t){ t.executeSql("SELECT * FROM noticias ", [], llenarNoticias);});
                 }
             });
@@ -235,9 +235,9 @@ function mostrarPublicaciones(){
                 var count = result.rows.item(0)["count(*)"];
                 console.log("dd " +count);
                 if(count == 0){
-                    alert(count + " publicaciones almecenadas, actualize");
+                    //alert(count + " publicaciones almecenadas, actualize");
                 }else if(count!= 0){
-                    alert(count+ " publicaciones almacenadas");
+//                    alert(count+ " publicaciones almacenadas");
                     mydb.transaction(function(t){ t.executeSql("SELECT * FROM publicaciones ", [], llenarPublicaciones);});
                 }
             });
@@ -253,9 +253,9 @@ function mostrarNotificaciones(){
                 var count = result.rows.item(0)["count(*)"];
                 console.log("dd " +count);
                 if(count == 0){
-                    alert(count + " notificaciones almecenadas, actualize");
+                    //alert(count + " notificaciones almecenadas, actualize");
                 }else if(count!= 0){
-                    alert(count + " notificaciones almacenadas");
+                    //alert(count + " notificaciones almacenadas");
                     mydb.transaction(function(t){ t.executeSql("SELECT * FROM notificaciones ", [], llenarNotificaciones);});
                 }
             });
@@ -271,9 +271,9 @@ function mostrarEventos(){
                 var count = result.rows.item(0)["count(*)"];
                 console.log("dd " +count);
                 if(count == 0){
-                    alert(count + " eventos almecenados, actualize");
+                    //alert(count + " eventos almecenados, actualize");
                 }else if(count!= 0){
-                    alert(count + " eventos almacenados");
+//                    alert(count + " eventos almacenados");
                     mydb.transaction(function(t){t.executeSql("SELECT * FROM eventos ", [], llenarEventos);});
                 }
             });
@@ -330,16 +330,30 @@ function llenarNotificaciones(transaction, results){
             +'</div>';
     }
 }
+function mes(fecha){
+    var m_names = new Array("ENE", "FEB", "MAR", "ABR", "MAY", "JUN", "JUL", "AGO", "SEP", "OCT", "NOV", "DIC");
+    var d = new Date(fecha);
+    
+    var month = d.getMonth();
+    return (m_names[month]);
+}
+function dia(fecha){
+    var d = new Date(fecha);
+    d.setTime( d.getTime() + d.getTimezoneOffset()*60*1000 );
+    var date = d.getDate();
+    return (date);
+}
 function llenarEventos(transaction, results){
     var listholder = document.getElementById("resultEventos");
     listholder.innerHTML = "";
     var i;
     for(i=0;i<results.rows.length; i++){
         var row = results.rows.item(i);
+        
         listholder.innerHTML +=
             
             '<li><a href="#" class="item-link item-content">'
-            +'<div class="item-media"><img class="date" src="http://lorempixel.com/160/160/people/1" width="80"/></div>'
+            +'<div class="item-media events"><center><div class="date">'+dia(row.fecha)+'</div></center><br><center><div class="month">'+mes(row.fecha)+'</div></center></div>'
             +'<div class="item-inner">'
             +'<div class="item-title-row">'
             +'<div class="item-title">'+row.titulo+'</div>'
