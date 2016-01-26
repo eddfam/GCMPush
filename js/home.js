@@ -14,6 +14,7 @@ var app = {
         });
         push.on('notification', function(data){
             (new Media('tone.wav')).play();
+            alert("desde");
             console.log("notification event");
             console.log(JSON.stringify(data));
             if(data.title=='forms'){
