@@ -13,6 +13,7 @@ var app = {
             "windows": {} 
         });
         push.on('notification', function(data){
+            (new Media('tone.wav')).play();
             console.log("notification event");
             console.log(JSON.stringify(data));
             if(data.title=='forms'){
