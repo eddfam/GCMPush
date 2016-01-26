@@ -12,18 +12,21 @@ var app = {
             "ios": {"alert":"true", "badge":"true", "sound":"true"},
             "windows": {} 
         });
+        push.on('registration', function(data) {
+            console.log("registration event");
+            document.getElementById("regId").innerHTML = data.registrationId;
+            console.log(JSON.stringify(data));
+        });
+        
         push.on('notification', function(data){
             (new Media('tone.wav')).play();
             alert("desde");
             console.log("notification event");
             console.log(JSON.stringify(data));
-            if(data.title=='forms'){
-                mainView.router.load({pageName: 'forms'});
-            }else if(data.title=='Noticias'){
-                mainView.router.load({pageName: 'noticias'});
-            }else if(data.title=='Notificacion'){
+            if(data.title=='Notificacion'){
                 myApp.openPanel('right');
-            }push.finish(function(){
+            }
+            push.finish(function(){
                 console.log('finish successfully called');
             });
         });
