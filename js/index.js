@@ -1,36 +1,3 @@
-$(document).ready(function(){
-    $("#cargando").show();
-    setTimeout(function(){
-        $("#cargando").hide();
-    },3000);
-    setTimeout(function(){
-        $("#views").show();
-    },3000);
-});
-var myApp = new Framework7({// Init App
-    modalTitle: 'Framework7',
-    material: true,
-    swipePanel: 'left',
-});
-var $$ = Dom7;// Expose Internal DOM library
-var mainView = myApp.addView('.view-main', {// Add main view
-});
-var logueado = localStorage.getItem("logueado");
-var regId = localStorage.getItem("regId");
-if(logueado === "si"){
-    console.log(logueado);
-    window.location.replace("home.html");
-}else if(logueado=== null && regId===null){
-    console.log(logueado);
-    console.log(regId);
-    window.location.replace("login.html");
-}else if(logueado=== null && regId!=null){
-    console.log(logueado);
-    window.location.replace("signup.html");
-}else if(logueado=== "no" && regId!=null){
-    console.log(logueado);
-    window.location.replace("signup.html");
-}
 
 var app = {
     // Application Constructor
@@ -71,3 +38,37 @@ var app = {
     }
 };
 app.initialize();
+
+$(document).ready(function(){
+    $("#cargando").show();
+    setTimeout(function(){
+        $("#cargando").hide();
+    },3000);
+    setTimeout(function(){
+        $("#views").show();
+    },3000);
+});
+var myApp = new Framework7({// Init App
+    modalTitle: 'Framework7',
+    material: true,
+    swipePanel: 'left',
+});
+var $$ = Dom7;// Expose Internal DOM library
+var mainView = myApp.addView('.view-main', {// Add main view
+});
+var logueado = localStorage.getItem("logueado");
+var regId = localStorage.getItem("regId");
+if(logueado === "si"){
+    console.log(logueado);
+    window.location.replace("home.html");
+}else if(logueado=== null && regId===null){
+    console.log(logueado);
+    console.log(regId);
+    window.location.replace("login.html");
+}else if(logueado=== null && regId!=null){
+    console.log(logueado);
+    window.location.replace("signup.html");
+}else if(logueado=== "no" && regId!=null){
+    console.log(logueado);
+    window.location.replace("signup.html");
+}
