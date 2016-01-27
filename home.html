@@ -27,7 +27,7 @@
                             </div>
                         </div>
                         <div class="page-content">
-                           <div id="logo"><center><img src="img/logo.png" alt=""></center></div>
+                           <div onclick="playAudio('w')" id="logo"><center><img src="img/logo.png" alt=""></center></div>
                             <div class="content-block-title">Usuario</div>
                             <div class="content-block">
                                 <div class="chip">
@@ -304,8 +304,22 @@
         <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
         <script type="text/javascript" src="js/framework7.js"></script>
         <script type="text/javascript" src="js/home.js"></script>
+        <audio id="w" src="Whistle.mp3" type="audio/mpeg" ></audio>
         
 	<script>
+        
+        function playAudio(id) {
+    var audioElement = document.getElementById(id);
+    var url = audioElement.getAttribute('src');
+    var my_media = new Media(url,
+            // success callback
+             function () { console.log("playAudio():Audio Success"); },
+            // error callback
+             function (err) { console.log("playAudio():Audio Error: " + err); }
+    );
+           // Play audio
+    my_media.play();
+}
         </script>
         <style>
             #popoverUsuario{

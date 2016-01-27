@@ -273,7 +273,6 @@ function mostrarNotificaciones(){
     }
 }
 function mostrarEventos(){
-    (new Media('tone.wav')).play();
     if (mydb){
         mydb.transaction(function(tx){
             tx.executeSql("SELECT count(*) FROM eventos",[], function(tx,result){
