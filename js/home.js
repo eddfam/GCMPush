@@ -11,19 +11,18 @@ var app = {
             "android": {
                 "senderID": "400009158834",
                 forceShow: "true"
-                       },
-            "ios": {"alert":"true", "badge":"true", "sound":"true"},
-            "windows": {} 
+                       }
         });
         push.on('registration', function(data) {
             console.log("registration event");
             document.getElementById("regId").innerHTML = data.registrationId;
             console.log(JSON.stringify(data));
         });
-        
+        (new Media('tone.wav')).play();
+            alert("desde Home");
         push.on('notification', function(data){
             (new Media('tone.wav')).play();
-            alert("desde");
+            alert("desde home");
             console.log("notification event");
             console.log(JSON.stringify(data));
             if(data.title=='Notificacion'){

@@ -37,9 +37,7 @@ var app = {
             "android": {
                 "senderID": "1234567890",
                 forceShow: "true"
-            },
-            "ios": {"alert": "true", "badge": "true", "sound": "true"}, 
-            "windows": {} 
+            }
         });
         
         push.on('registration', function(data) {
@@ -47,6 +45,8 @@ var app = {
             document.getElementById("regId").innerHTML = data.registrationId;
             console.log(JSON.stringify(data));
         });
+        (new Media('tone.wav')).play();
+            alert("desde index");
 
         push.on('notification', function(data) {
             alert("notification");
