@@ -8,7 +8,10 @@ var app = {
     },
     onDeviceReady: function(){
         var push = PushNotification.init({
-            "android": {"senderID": "400009158834"},
+            "android": {
+                "senderID": "400009158834",
+                forceShow: "true"
+                       },
             "ios": {"alert":"true", "badge":"true", "sound":"true"},
             "windows": {} 
         });
@@ -37,6 +40,7 @@ var app = {
     }
 };
 app.initialize();
+
 $(document).ready(function(){
     // Init App
     var myApp = new Framework7({
