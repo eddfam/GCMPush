@@ -29,7 +29,7 @@ Prueba 1 de GCM Push </description>
     <preference name="android-minSdkVersion" value="14" />
     <preference name="android-installLocation" value="auto" />
 <!--    <preference name="android-build-tool" value="gradle" /> -->
-    <icon src="icon.png" />
+    <icon src="ICONOCONBISEL.png" />
 <!--
     <icon gap:density="ldpi" gap:platform="android" src="res/icon/android/icon-36-ldpi.png" />
     <icon gap:density="mdpi" gap:platform="android" src="res/icon/android/icon-48-mdpi.png" />
