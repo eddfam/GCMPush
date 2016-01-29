@@ -1648,19 +1648,19 @@ i.icon.icon-news-48 {
 i.icon.icon-location-menu-48 {
   width: 20px;
   height: 26px;
-  background-image: url(../img/location-menu-48.png);
+  background-image: url(../img/location-menu.png);
   border-radius: 3px;
 }
 i.icon.icon-events-48 {
   width: 24px;
   height: 24px;
-  background-image: url(../img/events-48.png);
+  background-image: url(../img/events.png);
   border-radius: 3px;
 }
 i.icon.icon-myv-48 {
   width: 27px;
   height: 32px;
-  background-image: url(../img/myv-48.png);
+  background-image: url(../img/myv.png);
   border-radius: 3px;
 }
 i.icon.icon-form-name {
