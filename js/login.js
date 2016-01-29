@@ -190,7 +190,7 @@ $(document).ready(function(){
                     }
                     console.log(data.mensaje);
                     alert(data.mensaje);
-                    window.location =("home.html");
+                    window.location.replace("home.html");
                 }else{
                     alert("Error : "+data.mensaje);
                     console.log(data.mensaje);
