@@ -48,6 +48,13 @@ $(document).ready(function(){
         //swipePanel: 'left',
     });
     var $$ = Dom7;// Expose Internal DOM library
+
+    
+    var classList = $$('body')[0].classList;
+        for (var i = 0; i < classList.length; i++) {
+            if (classList[i].indexOf('theme') === 0) classList.remove(classList[i]);
+        }
+    classList.add('theme-lightgreen' );
     $$('.open-right-panel').on('click', function(e){
         // 'right' position to open Right panel
         myApp.openPanel('right');
