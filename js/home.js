@@ -50,15 +50,15 @@ $(document).ready(function(){
     var $$ = Dom7;// Expose Internal DOM library
 
     
-    var classList = $$('body')[0].classList;
-        for (var i = 0; i < classList.length; i++) {
-            if (classList[i].indexOf('theme') === 0) classList.remove(classList[i]);
-        }
-    classList.add('theme-lightgreen' );
-    $$('.open-right-panel').on('click', function(e){
-        // 'right' position to open Right panel
-        myApp.openPanel('right');
-    });
+//    var classList = $$('body')[0].classList;
+//        for (var i = 0; i < classList.length; i++) {
+//            if (classList[i].indexOf('theme') === 0) classList.remove(classList[i]);
+//        }
+//    classList.add('theme-lightgreen' );
+//    $$('.open-right-panel').on('click', function(e){
+//        // 'right' position to open Right panel
+//        myApp.openPanel('right');
+//    });
     var mainView = myApp.addView('.view-main',{// Add main view
         domCache: true //enable inline pages
     });
