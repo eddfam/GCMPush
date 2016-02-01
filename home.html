@@ -120,7 +120,7 @@
                                 <div class="left"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
                                 <div class="center">Inicio</div>
                                 <div class="right">
-                                    <a onclick="mostrarNotificaciones()" href="#" class="open-right-panel"><i class="icon icon-notification"></i></a>
+                                    <a onclick="mostrarNotificaciones()" href="#" data-panel="right" class="open-panel"><i class="icon icon-notification"></i></a>
                                     <a href="#" data-popover=".popover-links" class="link icon-only open-popover"><i class="icon icon-more"></i></a></div>
                             </div>
                         </div>
@@ -214,7 +214,7 @@
                                 </ul>
                             </div>
                         </div>
-                    </div> <!-- END Mision page -->
+                    </div> <!-- END Nosotros page -->
                     <div data-page="mapa" class="page cached">
                         <div class="navbar">
                             <div class="navbar-inner">
@@ -284,6 +284,61 @@
                             </div>
                       </div>
                     </div> <!-- END Ubicacion page -->
+                    <!-- Cuenta page -->
+                    <div data-page="miCuenta" class="page cached">
+                        <div class="navbar">
+                            <div class="navbar-inner">
+                                <div class="left"><a href="index.html" class="back link icon-only"><i class="icon icon-back"></i></a></div>
+                                <div class="center">Mi Cuenta</div>
+                                <div class="right"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
+                            </div>
+                        </div>
+                        <div class="page-content miCuenta">
+                            <div class="list-block">
+                                <div class="content-block-title">Mi cuenta</div>
+                                <div class="list-block inputs-list">
+                                    <ul>
+                                       <li>
+                                            <div class="item-content">
+                                                <div class="item-media"><i class="icon icon-form-name"></i></div>
+                                                <div class="item-inner"> 
+                                                    <div class="item-title floating-label">Nombre</div>
+                                                    <div class="item-input inputNombre">
+                                                        <input disabled name="miCuentaNombre" id="miCuentaNombre" type="text" placeholder=""/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-media"><i class="icon icon-form-email"></i></div>
+                                                <div class="item-inner"> 
+                                                    <div class="item-title floating-label">E-mail</div>
+                                                    <div class="item-input inputEmail">
+                                                        <input disabled name="miCuentaEmail" id="miCuentaEmail" type="email" placeholder=""/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-media"><i class="icon icon-form-settings"></i></div>
+                                                <div class="item-inner"> 
+                                                    <div class="item-title floating-label">Numero de Control</div>
+                                                    <div class="item-input inputNoControl">
+                                                        <input disabled name="miCuentaNoControl" id="miCuentaNoControl" type="text" placeholder=""/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="list-block">
+                                    <div class="content-block"><a href="#" id="update-button" class="button button-raised">Guardar Cambios</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- END Nosotros page -->
                 </div>
             </div>
         </div>
@@ -292,8 +347,8 @@
             <div class="popover-inner">
                 <div class="list-block">
                     <ul>
-                        <li><a href="miCuenta" class="list-button item-link">Mi Cuenta</a></li>
-                        <li><a href="password" class="list-button item-link">Cambiar Contraseña</a></li>
+                        <li><a href="#miCuenta" class="list-button item-link close-popover">Mi Cuenta</a></li>
+                        <li><a href="#password" class="list-button item-link">Cambiar Contraseña</a></li>
                         <li><a id="logout" class="list-button item-link">Salir</a></li>
                     </ul>
                 </div>
@@ -305,6 +360,7 @@
         <script type="text/javascript" src="js/home.js"></script>
         
 	<script>
+        
         </script>
         <style>
             #popoverUsuario{

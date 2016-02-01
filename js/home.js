@@ -164,6 +164,87 @@ $(document).ready(function(){
         window.localStorage.setItem("logueado", "no");
         window.location.replace("index.html");
     });
+    $('#miCuentaNombre').blur(function(){
+        document.getElementById('miCuentaNombre').disabled = true;
+    });
+    $('#miCuentaEmail').blur(function(){
+        document.getElementById('miCuentaEmail').disabled = true;
+    });
+    $('#miCuentaNoControl').blur(function(){
+        document.getElementById('miCuentaNoControl').disabled = true;
+    });
+    document.getElementById('miCuentaNombre').value=localStorage.getItem('nombreUsuario');
+    document.getElementById('miCuentaEmail').value=localStorage.getItem('email');
+    document.getElementById('miCuentaNoControl').value=localStorage.getItem('nControl');
+    
+    var actionSheetNombre = [
+        [
+            {
+                text: 'Desea editar su nombre',
+                label: true
+            },
+            {
+                text: 'Si',
+                onClick: function () {
+                    document.getElementById('miCuentaNombre').disabled = false;
+                    document.getElementById('miCuentaNombre').focus();
+                }
+            },
+            {
+                text: 'No',
+            },
+        ],
+    ];
+    $$('.inputNombre').on('click', function(e){
+        myApp.actions(actionSheetNombre);
+    });
+    var actionSheetEmail = [
+        [
+            {
+                text: 'Desea editar su Email',
+                label: true
+            },
+            {
+                text: 'Si',
+                onClick: function () {
+                    document.getElementById('miCuentaEmail').disabled = false;
+                    document.getElementById('miCuentaEmail').focus();
+                }
+            },
+            {
+                text: 'No',
+            },
+        ],
+    ];
+    $$('.inputEmail').on('click', function(e){
+        myApp.actions(actionSheetEmail);
+    });
+    var actionSheetNoControl = [
+        [
+            {
+                text: 'Desea editar el numero de control',
+                label: true
+            },
+            {
+                text: 'Si',
+                onClick: function () {
+                    document.getElementById('miCuentaNoControl').disabled = false;
+                    document.getElementById('miCuentaNoControl').focus();
+                }
+            },
+            {
+                text: 'No',
+            },
+        ],
+    ];
+    $$('.inputNoControl').on('click', function(e){
+        myApp.actions(actionSheetNoControl);
+    });
+    $$('#update-button').on('click', function(){
+        myApp.modalPassword('Introduzca su contraseña', function (password) {
+//            myApp.alert('Thank you! Password: ' + password);
+        });
+    });
 });
 if (window.openDatabase){
     var mydb = openDatabase("gsm_android_push", "0.1", "DB of gsmApp", 5 * 1024 * 1024);

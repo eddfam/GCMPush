@@ -178,15 +178,18 @@ $(document).ready(function(){
                     if(tipoUsuario =='alumno'){
                         window.localStorage.setItem("nControl", data.nControl);
                         window.localStorage.setItem("tipo", data.tipo);
+                        window.localStorage.setItem("email", data.email);
                     }else if(tipoUsuario=='padre' && cantidadNControl=='1'){
                         window.localStorage.setItem("nControl", data.nControl);
                         window.localStorage.setItem("tipo", data.tipo);
                         window.localStorage.setItem("cantidadNControl", data.numeroNControl);
+                        window.localStorage.setItem("email", data.email);
                     }else if(tipoUsuario=='padre' && cantidadNControl=='2'){
                         window.localStorage.setItem("nControl", data.nControl);
                         window.localStorage.setItem("nControl2", data.nControl2);
                         window.localStorage.setItem("tipo", data.tipo);
                         window.localStorage.setItem("cantidadNControl", data.numeroNControl);
+                        window.localStorage.setItem("email", data.email);
                     }
                     console.log(data.mensaje);
                     alert(data.mensaje);
