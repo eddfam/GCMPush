@@ -1665,12 +1665,12 @@ i.icon.icon-myv-48 {
   border-radius: 3px;
 }
 i.icon.icon-form-number {
-  width: 24px;
+  width: 19px;
   height: 24px;
   background-image: url("../img/number-48.png");
 }
 i.icon.icon-form-name {
-  width: 24px;
+  width: 25px;
   height: 24px;
   background-image: url("../img/nombre-48.png");
 }
@@ -1680,7 +1680,7 @@ i.icon.icon-form-password {
   background-image: url("../img/i-form-password-material.svg");
 }
 i.icon.icon-form-email {
-  width: 19px;
+  width: 24px;
   height: 24px;
   background-image: url("../img/emailContact-48.png");
 }
