@@ -1661,13 +1661,18 @@ i.icon.icon-events-48 {
 i.icon.icon-myv-48 {
   width: 23px;
   height: 32px;
-  background-image: url(../img/myv.png);
+  background-image: url(../img/nosotros-48.png);
   border-radius: 3px;
+}
+i.icon.icon-form-number {
+  width: 24px;
+  height: 24px;
+  background-image: url("../img/number-48.png");
 }
 i.icon.icon-form-name {
   width: 24px;
   height: 24px;
-  background-image: url("../img/i-form-name-material.svg");
+  background-image: url("../img/nombre-48.png");
 }
 i.icon.icon-form-password {
   width: 24px;
@@ -1675,9 +1680,9 @@ i.icon.icon-form-password {
   background-image: url("../img/i-form-password-material.svg");
 }
 i.icon.icon-form-email {
-  width: 24px;
+  width: 19px;
   height: 24px;
-  background-image: url("../img/i-form-email-material.svg");
+  background-image: url("../img/emailContact-48.png");
 }
 i.icon.icon-form-calendar {
   width: 24px;
