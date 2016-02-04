@@ -43,22 +43,12 @@ app.initialize();
 $(document).ready(function(){
     // Init App
     var myApp = new Framework7({
-        modalTitle: 'Framework7',
+        modalTitle: 'GSM Push',
         material: true,
         //swipePanel: 'left',
     });
     var $$ = Dom7;// Expose Internal DOM library
 
-    
-//    var classList = $$('body')[0].classList;
-//        for (var i = 0; i < classList.length; i++) {
-//            if (classList[i].indexOf('theme') === 0) classList.remove(classList[i]);
-//        }
-//    classList.add('theme-lightgreen' );
-//    $$('.open-right-panel').on('click', function(e){
-//        // 'right' position to open Right panel
-//        myApp.openPanel('right');
-//    });
     var mainView = myApp.addView('.view-main',{// Add main view
         domCache: true //enable inline pages
     });
@@ -170,12 +160,12 @@ $(document).ready(function(){
     $('#miCuentaEmail').blur(function(){
         document.getElementById('miCuentaEmail').disabled = true;
     });
-    $('#miCuentaNoControl').blur(function(){
-        document.getElementById('miCuentaNoControl').disabled = true;
-    });
-    document.getElementById('miCuentaNombre').value=localStorage.getItem('nombreUsuario');
-    document.getElementById('miCuentaEmail').value=localStorage.getItem('email');
-    document.getElementById('miCuentaNoControl').value=localStorage.getItem('nControl');
+//    $('#miCuentaNoControl').blur(function(){
+//        document.getElementById('miCuentaNoControl').disabled = true;
+//    });
+    var oldNombre = document.getElementById('miCuentaNombre').value=localStorage.getItem('nombreUsuario');
+    var oldEmail = document.getElementById('miCuentaEmail').value=localStorage.getItem('email');
+    var oldNoControl = document.getElementById('miCuentaNoControl').value=localStorage.getItem('nControl');
     
     var actionSheetNombre = [
         [
@@ -219,30 +209,72 @@ $(document).ready(function(){
     $$('.inputEmail').on('click', function(e){
         myApp.actions(actionSheetEmail);
     });
-    var actionSheetNoControl = [
-        [
-            {
-                text: 'Desea editar el numero de control',
-                label: true
-            },
-            {
-                text: 'Si',
-                onClick: function () {
-                    document.getElementById('miCuentaNoControl').disabled = false;
-                    document.getElementById('miCuentaNoControl').focus();
-                }
-            },
-            {
-                text: 'No',
-            },
-        ],
-    ];
-    $$('.inputNoControl').on('click', function(e){
-        myApp.actions(actionSheetNoControl);
-    });
+//    var actionSheetNoControl = [
+//        [
+//            {
+//                text: 'Desea editar el numero de control',
+//                label: true
+//            },
+//            {
+//                text: 'Si',
+//                onClick: function () {
+//                    document.getElementById('miCuentaNoControl').disabled = false;
+//                    document.getElementById('miCuentaNoControl').focus();
+//                }
+//            },
+//            {
+//                text: 'No',
+//            },
+//        ],
+//    ];
+//    $$('.inputNoControl').on('click', function(e){
+//        myApp.actions(actionSheetNoControl);
+//    });
+    
     $$('#update-button').on('click', function(){
-        myApp.modalPassword('Introduzca su contraseña', function (password) {
-//            myApp.alert('Thank you! Password: ' + password);
+        var lgPassword = localStorage.getItem('password');
+        myApp.modalPassword('Introduzca su contraseña', function(password){
+            
+            if(password===lgPassword){
+                var newNombre = document.getElementById('miCuentaNombre').value;
+                var newEmail = document.getElementById('miCuentaEmail').value;
+                myApp.alert('Contraseña correcta');
+                var datos;
+                if(tipoUsuario=='alumno'){
+                    datos = 'type=updateUsuario&&oldEmail='+oldEmail+'&&nombre='+newNombre+'&&email='+newEmail;
+                }else if(tipoUsuario=='padre'&& cantidadNControl==1){
+                    datos = 'type=updateAlumno&&oldEmail='+oldEmail+'&&nombre='+newNombre+'&&email='+newEmail;
+                }
+                if(oldNombre!=newNombre||oldEmail!=newEmail){
+                    $.ajax({
+                        url:'http://desde9.esy.es/usuario.php',
+                        type: 'GET',
+                        data: datos,
+                        dataType : 'jsonp',
+                        success: function(data){
+                            if(data.estatus == true){
+                                window.localStorage.setItem("nombreUsuario", data.nombre);
+                                window.localStorage.setItem("email", data.email);
+                                console.log(data.mensaje);
+                                myApp.alert(data.mensaje);
+                            }else{
+                                alert("Error : "+data.mensaje);
+                                console.log(data.mensaje);
+                            }
+                        },error: function(e){
+                            console.log(JSON.stringify(e));
+                            alert("ERROR TECNICO CON EL SERVICIO, INTENTE DE NUEVO MAS TARDE " +JSON.stringify(e));
+                        }
+                    });
+                }else{
+                    myApp.alert('No ha modificado nada')
+                }
+                
+                
+            }
+            else{
+                myApp.alert("Contraseña incorrecta");
+            }
         });
     });
 });

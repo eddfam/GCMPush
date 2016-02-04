@@ -96,18 +96,18 @@ var $$ = Dom7;// Expose Internal DOM library
 var mainView = myApp.addView('.view-main', {// Add main view
 });
 var logueado = localStorage.getItem("logueado");
-var regId = localStorage.getItem("regId");
+var email = localStorage.getItem("email");
 if(logueado === "si"){
     console.log(logueado);
     window.location.replace("home.html");
-}else if(logueado=== null && regId===null){
+}else if(logueado=== null && email===null){
     console.log(logueado);
     console.log(regId);
     window.location.replace("login.html");
-}else if(logueado=== null && regId!=null){
+}else if(logueado=== null && email!=null){
     console.log(logueado);
     window.location.replace("signup.html");
-}else if(logueado=== "no" && regId!=null){
+}else if(logueado=== "no" && email!=null){
     console.log(logueado);
     window.location.replace("signup.html");
 }
